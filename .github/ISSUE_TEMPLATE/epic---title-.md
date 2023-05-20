@@ -1,7 +1,7 @@
 ---
-name: 'Epic: <TITLE>'
+name: 'Epic'
 about: High-level feature with multiple stories.
-title: ''
+title: 'Epic: <TITLE>'
 labels: ''
 assignees: ''
 
