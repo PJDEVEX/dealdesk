@@ -31,7 +31,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 development = os.environ.get('DEVELOPMENT', False)
 DEBUG = development
 
-ALLOWED_HOSTS = []
+# List of allowed hosts for the Django application.
+ALLOWED_HOSTS = ['https://dealdesk-crm.herokuapp.com/', 'localhost']
 
 
 # Application definition
