@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # Third-party "clodinary_strg app. it should come before ststicfiles
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    # cloudinary app as an installed app
+    'cloudinary',
     'clients',
     'projects',
     'task_manager',
@@ -60,10 +64,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'crm.urls'
 
+# Define the path to the templates directory
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,8 +140,25 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+# Base URL for serving static files
 STATIC_URL = '/static/'
+# Storage engine for static files
+STATICFILES_STORAGE = (
+    'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+)
+# Additional directories to find static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+# Location for collected static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# Base URL for serving media files
+MEDIA_URL = '/media/'
+# Storage engine for media files
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
