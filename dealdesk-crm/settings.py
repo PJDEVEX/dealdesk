@@ -148,9 +148,7 @@ STATICFILES_STORAGE = (
     'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 )
 # Additional directories to find static files
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 # Location for collected static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
