@@ -48,9 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # cloudinary app as an installed app
     'cloudinary',
-    'clients',
-    'projects',
+    'client',
+    'project',
     'task_manager',
+    'team',
 ]
 
 MIDDLEWARE = [
