@@ -7,7 +7,10 @@ from cloudinary.models import CloudinaryField
 
 
 class TaskManager(models.Model):
-    task_id = models.CharField(max_length=10)
+    task_id = models.CharField(
+        max_length=10,
+        primary_key=True
+        )
     title = models.CharField(max_length=55, null=False)
     description = models.TextField(100)
     due_date = models.DateTimeField(auto_now_add=True)

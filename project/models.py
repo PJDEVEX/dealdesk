@@ -19,7 +19,11 @@ class Brand(models.Model):
         created_on (DateTimeField): timestamp of when brand was created.
         updated_on (DateTimeField): timestamp of last update to the brand.
     """
-    brand_id = models.CharField(max_length=10, unique=True)
+    brand_id = models.CharField(
+        max_length=10,
+        unique=True,
+        primary_key=True
+        )
     brand = models.CharField(max_length=55, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -43,7 +47,11 @@ class Category(models.Model):
         created_on (DateTimeField): timestamp when the category was created.
         updated_on (DateTimeField): timestamp of last update to the category.
     """
-    category_id = models.CharField(max_length=10, unique=True)
+    category_id = models.CharField(
+        max_length=10,
+        unique=True,
+        primary_key=True
+        )
     category = models.CharField(max_length=55, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -54,7 +62,11 @@ class Category(models.Model):
 
 
 class Project(models.Model):
-    project_id = models.CharField(max_length=10, unique=True)
+    project_id = models.CharField(
+        max_length=10,
+        unique=True,
+        primary_key=True
+        )
     name = models.CharField(max_length=100, null=False)
     client = models.ForeignKey(
         'client.Client',
