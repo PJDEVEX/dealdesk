@@ -20,7 +20,7 @@ class Brand(models.Model):
         updated_on (DateTimeField): timestamp of last update to the brand.
     """
     brand_id = models.CharField(max_length=10, unique=True)
-    brand = models.TextField(max_length=55, null=False)
+    brand = models.CharField(max_length=55, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -44,7 +44,7 @@ class Category(models.Model):
         updated_on (DateTimeField): timestamp of last update to the category.
     """
     category_id = models.CharField(max_length=10, unique=True)
-    category = models.TextField(max_length=55, null=False)
+    category = models.CharField(max_length=55, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
