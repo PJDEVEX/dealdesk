@@ -50,6 +50,7 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['category']
+        verbose_name_plural = "categories"  # Add pural verbose for the model 
 
 
 class Project(models.Model):
