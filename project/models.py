@@ -1,12 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-from task_manager.models import TaskManager
-from client.models import Client
-from team.models import Manager, Sar  # SAR = Sales Account Responsible 
-
 
 # Create your models here.
+
 
 class Brand(models.Model):
     """
@@ -26,6 +23,9 @@ class Brand(models.Model):
     brand = models.TextField(max_length=55, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['brand']
 
 
 class Category(models.Model):
@@ -48,32 +48,36 @@ class Category(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['category']
+
 
 class Project(models.Model):
     project_id = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=100, null=False)
     client = models.ForeignKey(
-        Client,
+        'client.Client',
         on_delete=models.CASCADE,
-        related_name='client_projects')
+        related_name='client_projects'
+    )
     location = models.CharField(max_length=55, null=False)
     brand = models.ForeignKey(
         Brand,
         on_delete=models.CASCADE,
         related_name='brand_projects'
-        )
-    creation_on = models.DateTimeField(auto_now_add=True)
+    )
+    created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     salesman = models.ForeignKey(
-        Sar,
+        'team.Sar',
         on_delete=models.CASCADE,
         related_name='salesman_projects'
-        )
+    )
     manager = models.ForeignKey(
-        Manager,
+        'team.Manager',
         on_delete=models.CASCADE,
         related_name='manager_projects'
-        )
+    )
     type_of_construction = models.CharField(
         max_length=20,
         choices=[
@@ -85,7 +89,8 @@ class Project(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
-        related_name='category_projects')
+        related_name='category_projects'
+    )
     project_status = models.TextField(
         max_length=55,
         choices=[
@@ -95,7 +100,8 @@ class Project(models.Model):
             ("Won", "Won")
         ],
         null=False,
-        default="Active")
+        default="Active"
+    )
     est_closing_date = models.DateField(null=False)
     est_date_of_delivery = models.DateField()
     potential_value = models.FloatField(null=False)
@@ -106,11 +112,12 @@ class Project(models.Model):
             (0.00, "No Chance"),
             (0.20, "Very Low"),
             (0.50, "May be"),
-            (0.75, "Higly Likely"),
+            (0.75, "Highly Likely"),
             (0.90, "WON PENDING PO"),
             (1.00, "WON with PO"),
         ],
-        null=False)
+        null=False
+    )
     forecast_pxp = models.FloatField()
 
     def save(self, *args, **kwargs):
