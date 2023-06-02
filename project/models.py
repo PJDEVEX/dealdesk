@@ -1,8 +1,30 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils import timezone
 
 # Create your models here.
+
+PROJECT_STATUS = [
+            ("Atv", "Active"),
+            ("O/h", "On hold"),
+            ("P.won", "Partially won"),
+            ("Won", "Won")
+        ]
+
+TYPE_OF_CONSTRUCTION = [
+            ("NC", "New Construction"),
+            ("RF", "Refurbishment")
+        ]
+
+WINNING_CHANCE = [
+            (0.00, "0% - No Chance"),
+            (0.20, "20% - Very Low, 20%"),
+            (0.50, "50% - May be"),
+            (0.75, "75% - Highly Likely"),
+            (0.90, "90% - WON PENDING PO"),
+            (1.00, "100% - WON with PO"),
+        ]
 
 
 class Brand(models.Model):
@@ -14,22 +36,19 @@ class Brand(models.Model):
     brand name, and timestamps for creation and updates.
 
     Attributes:
-        brand_id (str): The unique identifier of the brand.
         brand (str): The name or description of the brand.
         created_on (DateTimeField): timestamp of when brand was created.
         updated_on (DateTimeField): timestamp of last update to the brand.
     """
-    brand_id = models.CharField(
-        max_length=10,
-        unique=True,
-        primary_key=True
-        )
     brand = models.CharField(max_length=55, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['brand']
+    
+    def __str__(self):
+        return self.brand
 
 
 class Category(models.Model):
@@ -42,76 +61,60 @@ class Category(models.Model):
     updates.
 
     Attributes:
-        category_id (str): The unique identifier of the category.
         category (str): The name or description of the category.
         created_on (DateTimeField): timestamp when the category was created.
         updated_on (DateTimeField): timestamp of last update to the category.
     """
-    category_id = models.CharField(
-        max_length=10,
-        unique=True,
-        primary_key=True
-        )
     category = models.CharField(max_length=55, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['category']
-        verbose_name_plural = "categories"  # Add pural verbose for the model 
+        verbose_name_plural = "categories"  # Add pural verbose for the model
+
+    def __str__(self):
+        return self.category
 
 
 class Project(models.Model):
-    project_id = models.CharField(
-        max_length=10,
-        unique=True,
-        primary_key=True
-        )
     name = models.CharField(max_length=100, null=False)
     client = models.ForeignKey(
         'client.Client',
         on_delete=models.CASCADE,
-        related_name='client_projects'
+        related_name='projects'
     )
     location = models.CharField(max_length=55, null=False)
     brand = models.ForeignKey(
         Brand,
         on_delete=models.CASCADE,
-        related_name='brand_projects'
+        related_name='projects'
     )
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     salesman = models.ForeignKey(
         'team.Sar',
         on_delete=models.CASCADE,
-        related_name='salesman_projects'
+        related_name='projects',
     )
     manager = models.ForeignKey(
         'team.Manager',
         on_delete=models.CASCADE,
-        related_name='manager_projects'
+        related_name='projects'
     )
     type_of_construction = models.CharField(
         max_length=20,
-        choices=[
-            ("NC", "New Construction"),
-            ("RF", "Refurbishment")
-        ],
+        choices=TYPE_OF_CONSTRUCTION,
         null=False
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
-        related_name='category_projects'
+        related_name='projects'
     )
     project_status = models.TextField(
         max_length=55,
-        choices=[
-            ("Atv", "Active"),
-            ("O/h", "On hold"),
-            ("P.won", "Partially won"),
-            ("Won", "Won")
-        ],
+        choices=PROJECT_STATUS,
         null=False,
         default="Active"
     )
@@ -121,17 +124,9 @@ class Project(models.Model):
     winning_chance = models.DecimalField(
         max_digits=3,
         decimal_places=2,
-        choices=[
-            (0.00, "No Chance"),
-            (0.20, "Very Low"),
-            (0.50, "May be"),
-            (0.75, "Highly Likely"),
-            (0.90, "WON PENDING PO"),
-            (1.00, "WON with PO"),
-        ],
+        choices=WINNING_CHANCE,
         null=False
     )
-    forecast_pxp = models.FloatField()
 
     def save(self, *args, **kwargs):
         """
@@ -152,7 +147,7 @@ class Project(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
-        ordering = ['-created_on']
+        ordering = ['name']
 
     def __str__(self):
         return self.name

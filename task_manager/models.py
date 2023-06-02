@@ -1,39 +1,40 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-
+from django.utils import timezone
 
 # Create your models here.
 
+STATUS_CHOICES = [
+    ("TBD", "To Do"),
+    ("D", "Done"),
+]
+
+PRIORITY_CHOICES = [
+    ("N", "Normal"),
+    ("U", "Urgent"),
+]
+
 
 class TaskManager(models.Model):
-    task_id = models.CharField(
-        max_length=10,
-        primary_key=True
-        )
     title = models.CharField(max_length=55, null=False)
-    description = models.TextField(100)
+    description = models.CharField(max_length=255)
     due_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(
         max_length=50,
-        choices=[
-            ("TBD", "To-be-Done"),
-            ("D", "Done")
-        ],
+        choices=STATUS_CHOICES,
+        default="To Do",
         null=False
         )
     priority = models.CharField(
         max_length=50,
-        choices=[
-            ("N", "Normal"),
-            ("U", "Urgent")
-        ],
+        choices=PRIORITY_CHOICES,
         default="Normal",
         null=False)
     assigned_to = models.ForeignKey(
-        'team.SAR',
+        'team.Sar',
         on_delete=models.CASCADE,
-        related_name='sar_tasks')
+        related_name='tasks')
 
     class Meta:
         ordering = ['due_date']
