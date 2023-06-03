@@ -21,4 +21,4 @@ class ClientAdmin(admin.ModelAdmin):
         'country',
         'salesman',
         'manager'
-        ) 
+        )
