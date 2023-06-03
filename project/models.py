@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
+from decimal import Decimal
 
 # Create your models here.
 
@@ -143,7 +144,9 @@ class Project(models.Model):
         Returns:
             None
         """
-        self.forecast_pxp = self.potential_value * self.winning_chance
+        # Convert potential value to deciamal
+        potential_value_decimal = Decimal(str(self.potential_value))
+        self.forecast_pxp = potential_value_decimal * self.winning_chance
         super().save(*args, **kwargs)
 
     class Meta:
