@@ -19,13 +19,13 @@ TYPE_OF_CONSTRUCTION = [
         ]
 
 WINNING_CHANCE = [
-            (0.00, "0% - No Chance"),
-            (0.20, "20% - Very Low, 20%"),
-            (0.50, "50% - May be"),
-            (0.75, "75% - Highly Likely"),
-            (0.90, "90% - WON PENDING PO"),
-            (1.00, "100% - WON with PO"),
-        ]
+    (Decimal('0.00'), "0% - No Chance"),
+    (Decimal('0.20'), "20% - Very Low, 20%"),
+    (Decimal('0.50'), "50% - May be"),
+    (Decimal('0.75'), "75% - Highly Likely"),
+    (Decimal('0.90'), "90% - WON PENDING PO"),
+    (Decimal('1.00'), "100% - WON with PO"),
+    ]
 
 
 class Brand(models.Model):
@@ -127,6 +127,12 @@ class Project(models.Model):
         decimal_places=2,
         choices=WINNING_CHANCE,
         null=False
+    )
+    forecast_pxp = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True
     )
 
     def save(self, *args, **kwargs):
