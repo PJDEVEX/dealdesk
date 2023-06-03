@@ -15,6 +15,8 @@ import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# Define the path to the templates directory
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Check if the 'env.py' file exists
 if os.path.exists('env.py'):
@@ -69,9 +71,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dealdesk-crm.urls'
-
-# Define the path to the templates directory
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 TEMPLATES = [
@@ -160,8 +159,6 @@ STATICFILES_STORAGE = (
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 # Location for collected static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
 
 
 # Default primary key field type
