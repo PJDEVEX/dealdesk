@@ -1,10 +1,35 @@
 from django.contrib import admin
-from team.models import Manager, Sar
+from team.models import Sar, Manager
 
 
-# Register manager and Sar models
-# Register the Project, Brand, Category Models in the admin site
-models_to_register = [Sar, Manager]
+@admin.register(Manager)
+class ManagerAdmin(admin.ModelAdmin):
+    # Define the list of fields to be displayed in the list view
+    list_display = (
+        'id',
+        'first_name',
+        'last_name',
+        'mobile',
+        'email',
+        'created_on',
+        'updated_on',
+        )
 
-for model in models_to_register:
-    admin.site.register(model)
+
+@admin.register(Sar)
+class SarAdmin(admin.ModelAdmin):
+    # Define the list of fields to be displayed in the admin view
+    list_display = (
+        'id',
+        'first_name',
+        'last_name',
+        'mobile',
+        'email',
+        'manager',
+        'created_on',
+        'updated_on',
+        )
+    # Let the user to filer the Sar by manager
+    list_filter = (
+        ('manager', admin.RelatedOnlyFieldListFilter),
+        )
