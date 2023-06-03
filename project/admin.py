@@ -15,6 +15,7 @@ from project.models import Project, Category, Brand
 #         pass  # If the model is already registered, skip it
 
 # Register the Project, Brand, Category Models in the admin site
-admin.site.register(Project)
-admin.site.register(Brand)
-admin.site.register(Category)
+models_to_register = [Project, Brand, Category]
+
+for model in models_to_register:
+    admin.site.register(model)
