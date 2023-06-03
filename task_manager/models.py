@@ -19,7 +19,7 @@ PRIORITY_CHOICES = [
 class TaskManager(models.Model):
     title = models.CharField(max_length=55, null=False)
     description = models.CharField(max_length=255)
-    due_date = models.DateTimeField(auto_now_add=True)
+    due_date = models.DateTimeField(null=False)
     status = models.CharField(
         max_length=50,
         choices=STATUS_CHOICES,
