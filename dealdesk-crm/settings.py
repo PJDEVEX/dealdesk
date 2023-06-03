@@ -35,7 +35,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'dealdesk-crm.herokuapp.com',
     'localhost',
-    '8000-pjdevex-dealdesk-66d4cztmpol.ws-eu98.gitpod.io'
+    '8000-pjdevex-dealdesk-vw66mkttbvd.ws-eu98.gitpod.io'
     ]
 
 
