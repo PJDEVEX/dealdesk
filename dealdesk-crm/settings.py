@@ -35,7 +35,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'dealdesk-crm.herokuapp.com',
     'localhost',
-    '8000-pjdevex-dealdesk-tf1tnnys1kc.ws-eu98.gitpod.io',    
+    '8000-pjdevex-dealdesk-tf1tnnys1kc.ws-eu98.gitpod.io',   
     ]
 
 
@@ -143,6 +143,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Base URL for serving media files
+MEDIA_URL = '/media/'
+# Storage engine for media files
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -158,10 +162,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-# Base URL for serving media files
-MEDIA_URL = '/media/'
-# Storage engine for media files
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # Default primary key field type
