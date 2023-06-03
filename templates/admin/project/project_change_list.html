@@ -1,0 +1,13 @@
+<!-- Add a help text to search element in project admin.
+    So that user find it easy to search -->
+{% extends "admin/change_list.html" %}
+
+{% block search %}{{ block.super }}
+
+<div class="search-help-text">
+    Your can find a project(s) by <strong>name, location, 
+    brand, category, salesman</strong>, or <strong>company name</strong>.
+    
+</div>
+
+{% endblock %}
