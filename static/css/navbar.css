@@ -1,0 +1,23 @@
+.vertical-navbar {
+    width: 25%;
+    max-width: 320px;
+    min-width: 200px;
+    height: 100vh;
+}
+
+.vertical-navbar .navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.vertical-navbar .navbar-brand {
+    margin-bottom: 1rem;
+}
+
+.vertical-navbar .navbar-nav {
+    flex-direction: column;
+}
+
+.vertical-navbar .nav-item {
+    margin-bottom: 0.5rem;
+}

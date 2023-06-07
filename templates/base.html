@@ -7,12 +7,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- CSS Links -->
   {% block extra_css %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
     integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{% static 'css/light-dark.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
   {% endblock %}
 
   <!-- Font Awesome link -->
@@ -33,43 +35,27 @@
   <meta name="author" content="PJDEVEX">
   <meta name="robots" content="index, nofollow">
 
+  <!-- Dynamic titiles along with the brand name -->
   <title>{% block title %}{% endblock %} | DealDesk CRM</title>
 </head>
 
 <body data-bs-theme="dark">
-
-  <!-- Horizantal navbar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand me-auto" href="#">DealDesk |CRM </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-        
-        <li class="nav-item my-auto">
-          <form class="form-check form-switch">
-            <input class="form-check-input border bg-dark border-black shadow-none" type="checkbox" role="switch"
-              id="flexSwitchCheckChecked" checked onclick="lightdarkfunction()">
-            <label class="form-check-label" for="flexSwitchCheckChecked">Mode</label>
-          </form>
-      </ul>
-      </div>
+  <!-- Branding -->
+  <div class="container-fluid bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg ">
+      <a class="navbar-brand me-auto" href="#">DealDesk |CRM</a>
+    </nav>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- navbar.html template -->
+      {% include 'navbar.html' %}
     </div>
-  </nav>
+    <div class="">
+    </div>
+    
 
-  
+  </div>
 
   <!-- Links to script files -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
