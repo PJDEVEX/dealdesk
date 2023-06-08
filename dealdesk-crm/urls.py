@@ -5,4 +5,5 @@ from project.views import project
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('project.urls')),
+    path('client/', include('client.urls')),
 ]
