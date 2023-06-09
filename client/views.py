@@ -28,4 +28,3 @@ class ClientListView(ListView):
             )
 
         return queryset
-
