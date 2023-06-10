@@ -1,62 +1,65 @@
 <div class="sidebar col-md-3 col-lg-2 p-0 bg-body-tertiary">
-    <div class="offcanvas-lg offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-      <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto vh-100">
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2">
-            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
-              <i class="fa-solid fa-gauge-high"></i>
-              Dashboard
-            </a>
-          </li>
-          <!-- Add the "navbar-light" class to the nav-link elements in light mode -->
-          <li class="nav-item mb-2">
-            <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
-              <i class="fa-solid fa-clipboard-check"></i>
-              Task Manager
-            </a>
-          </li>
-          <li class="nav-item mb-2">
-            <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
-              <i class="fa-solid fa-filter-circle-dollar"></i>
-              Projects
-            </a>
-          </li>
-          <li class="nav-item mb-2">
-            <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="{% url 'client:client-list' %}">
-              <i class="fa-solid fa-users"></i>
-              Clients
-            </a>
-          </li>
-          <li class="nav-item mb-2">
-            <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
-              <i class="fa-solid fa-book-open"></i>
-              Slog
-            </a>
-          </li>
-        </ul>
-        <hr class="mt-3">
-        <!-- Login management -->
-        <ul class="nav flex-column mb-auto">
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
-              <i class="fa-solid fa-arrow-right-to-bracket"></i>
-              Signin
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
-              <i class="fa-solid fa-arrow-right-from-bracket"></i>
-              Singnout
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
-              <i class="fa-solid fa-right-to-bracket"></i>
-              Signup
-            </a>
-          </li>
-        </ul>
-      </div>
+  <div class="offcanvas-lg offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+    aria-labelledby="sidebarMenuLabel">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto vh-100">
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+            <i class="fa-solid fa-gauge-high"></i>
+            Dashboard
+          </a>
+        </li>
+        <!-- Add the "navbar-light" class to the nav-link elements in light mode -->
+        <li class="nav-item mb-2">
+          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
+            <i class="fa-solid fa-clipboard-check"></i>
+            Task Manager
+          </a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
+            <i class="fa-solid fa-filter-circle-dollar"></i>
+            Projects
+          </a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="{% url 'client:client-list' %}">
+            <i class="fa-solid fa-users"></i>
+            Clients
+          </a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
+            <i class="fa-solid fa-book-open"></i>
+            Slog
+          </a>
+        </li>
+      </ul>
+      <hr class="mt-3">
+      <!-- Login management -->
+      <ul class="nav flex-column mb-auto">
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            Signin
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Singnout
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Signup
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
-  
+</div>
