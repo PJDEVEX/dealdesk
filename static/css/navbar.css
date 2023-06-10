@@ -4,6 +4,16 @@
     height: 1rem;
 }
 
+/* Light mode font color */
+.sidebar .nav-link.navbar-light {
+    color: #000000 !important;
+  }
+  
+  /* Dark mode font color */
+  [data-bs-theme="dark"] .sidebar .nav-link.navbar-light {
+    color: #ffffff !important;
+  }
+
 /*
    * Sidebar
    */
