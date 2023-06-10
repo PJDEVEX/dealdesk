@@ -50,6 +50,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    # User authentication with social account support
+    'allauth',
+    # User authentication with email support
+    'allauth.account',
+    # Social account support for user authentication
+    'allauth.socialaccount',
     # Third-party "clodinary_strg app. it should come before ststicfiles
     'cloudinary_storage',
     'django.contrib.staticfiles',
@@ -60,6 +67,14 @@ INSTALLED_APPS = [
     'task_manager',
     'team',
 ]
+
+# Assign the site ID to 1 as per Django convention in the settings file.
+SITE_ID = 1
+
+# Define login and logout redirect URLs
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -4,6 +4,11 @@ from project.views import project
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # URLs for the apps in your project
     path('', include('project.urls')),
     path('client/', include('client.urls')),
+
+    # Authentication URLs from allauth
+    path('accounts/', include('allauth.urls')),
 ]
