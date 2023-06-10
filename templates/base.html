@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
         integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- navbar css -->
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <!-- color mode css -->
+    <link rel="stylesheet" href="{% static 'css/color-mode.css' %}">
     {% endblock %}
 
     <!-- Font Awesome link -->
@@ -39,15 +42,15 @@
 </head>
 
 
-<body data-bs-theme="dark">
-    <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
+<body>
+    <header class="navbar sticky-top flex-md-nowrap p-0 shadow">
         <!-- branding -->
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">DealDesk | CRM</a>
-        
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">DealDesk | CRM</a>
+
         <!-- Toggle navbar -->
         <ul class="navbar-nav flex-row d-md-none">
             <li class="nav-item text-nowrap">
-                <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas"
+                <button class="nav-link px-3" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
@@ -64,26 +67,28 @@
             <!-- Main body -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 {% block content %}
-    
+
                 {% endblock %}
-    
+
+            </main>
         </div>
-
-
-        </main>
-
-            
-        
     </div>
 
-
-    
+    <!-- Color mode change -->
+    <div>
+        {% include 'includes/color-mode.html' %}
+    </div>
 
     <!-- Links to script files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
         integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{% static 'script/light-dark.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <script src="{% static 'script/color-mode.js' %}"></script>
+
 </body>
 
 </html>
