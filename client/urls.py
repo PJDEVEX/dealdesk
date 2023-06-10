@@ -4,5 +4,5 @@ from .views import ClientListView
 app_name = 'client'
 
 urlpatterns = [
-    path('list/', ClientListView.as_view(), name='client-list'),
+    path('list/', ClientListView.as_view(), name='client_list'),
 ]
