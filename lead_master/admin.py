@@ -1,10 +1,10 @@
 from django.contrib import admin
-from project.models import Project, Category, Brand
+from lead_master.models import LeadMaster, Category, Brand
 from team.models import Sar
 
 
-@admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
+@admin.register(LeadMaster)
+class LeadMasterAdmin(admin.ModelAdmin):
     # Define the list of fields to be displayed in the change list view
     list_display = (
         'id',
@@ -14,7 +14,7 @@ class ProjectAdmin(admin.ModelAdmin):
         'brand',
         'category',
         'type_of_construction',
-        'project_status',
+        'lead_status',
         'est_closing_date',        
         'est_date_of_delivery',
         'potential_value',
@@ -24,14 +24,14 @@ class ProjectAdmin(admin.ModelAdmin):
         )
     # Define the list of fields to be used for filtering the change list view
     list_filter = (
-        'project_status',
+        'lead_status',
         'type_of_construction',
         'winning_chance',
         'brand',
         'category',
         'salesman',
         )
-    # Search fields allow searching by project name, location, brand, category,
+    # Search fields allow searching by lead_master name, location, brand, category,
     # salesman, or client company name.
     search_fields = [
         'name',
@@ -43,7 +43,7 @@ class ProjectAdmin(admin.ModelAdmin):
         'client__company_name',
         ]
     # Add a helper text so that user finds it easy to search
-    change_list_template = 'admin/project/project_change_list.html'
+    change_list_template = 'admin/lead_master/lead_master_change_list.html'
 
 
 @admin.register(Brand)

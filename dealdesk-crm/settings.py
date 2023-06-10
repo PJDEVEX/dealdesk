@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     # cloudinary app as an installed app
     'cloudinary',
     'client',
-    'project',
+    'lead_master',
     'task_manager',
     'team',
 ]

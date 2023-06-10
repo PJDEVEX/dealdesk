@@ -6,7 +6,7 @@ from decimal import Decimal
 
 # Create your models here.
 
-PROJECT_STATUS = [
+LEAD_STATUS = [
             ("Atv", "Active"),
             ("O/h", "On hold"),
             ("P.won", "Partially won"),
@@ -78,30 +78,30 @@ class Category(models.Model):
         return self.category
 
 
-class Project(models.Model):
+class LeadMaster(models.Model):
     name = models.CharField(max_length=100, null=False)
     client = models.ForeignKey(
         'client.Client',
         on_delete=models.CASCADE,
-        related_name='projects'
+        related_name='lead_masters'
     )
     location = models.CharField(max_length=55, null=False)
     brand = models.ForeignKey(
         Brand,
         on_delete=models.CASCADE,
-        related_name='projects'
+        related_name='lead_masters'
     )
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     salesman = models.ForeignKey(
         'team.Sar',
         on_delete=models.CASCADE,
-        related_name='projects',
+        related_name='lead_masters',
     )
     manager = models.ForeignKey(
         'team.Manager',
         on_delete=models.CASCADE,
-        related_name='projects'
+        related_name='lead_masters'
     )
     type_of_construction = models.CharField(
         max_length=20,
@@ -111,11 +111,11 @@ class Project(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
-        related_name='projects'
+        related_name='lead_masters'
     )
-    project_status = models.TextField(
+    lead_status = models.TextField(
         max_length=55,
-        choices=PROJECT_STATUS,
+        choices=LEAD_STATUS,
         null=False,
         default="Active"
     )
@@ -137,7 +137,7 @@ class Project(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Save the project instance.
+        Save the lead_master instance.
 
         This method overrides the default save method to calculate
         the forecasted potential value (forecast_pxp) based on the
