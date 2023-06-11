@@ -7,7 +7,8 @@
 
       <h1 class="bg-body">Client List</h1>
 
-      <form class="mb-3">
+      <form class="mb-3" method="post" action="{% url 'client:client_list' %}">
+        {% csrf_token %}
         <div class="row">
           <div class="col-md-4 mb-3">
             <label for="client_type">Client Type</label>
