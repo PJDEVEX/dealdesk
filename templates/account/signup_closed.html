@@ -1,17 +1,15 @@
-{% extends "base.html" %}
+{% extends "account/account_base.html" %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
 
-{% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <div class="card mt-5">
+{% block account_content %}
+
+      <div class="mt-5">
         <div class="card-body">
           <h5 class="card-title">{% trans "Sign Up Disabled" %}</h5>
-          <p class="card-text">{% trans "We apologize for the inconvenience, but the sign up option is currently disabled." %}</p>
+          <p class="card-text">{% trans "We apologize for the inconvenience, the sign up option is disabled." %}</p>
           <p class="card-text">{% trans "Please contact the administrator to create an account." %}</p>
           <p class="card-text">{% trans "Thank you." %}</p>
           <p class="card-text">
@@ -22,7 +20,5 @@
           </p>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+
 {% endblock %}
