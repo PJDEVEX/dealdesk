@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     # Third-party "clodinary_strg app. it should come before ststicfiles
     'cloudinary_storage',
     'django.contrib.staticfiles',
+    "crispy_forms",
+    "crispy_bootstrap5",
     # cloudinary app as an installed app
     'cloudinary',
     'client',
@@ -88,6 +90,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'dealdesk-crm.urls'
 
+# Allowed template packs for crispy forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+# Default template pack for crispy forms
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 TEMPLATES = [
     {
