@@ -62,8 +62,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "crispy_forms",
     "crispy_bootstrap5",
-    # cloudinary app as an installed app
     'cloudinary',
+    # Project apps
     'client',
     'lead_master',
     'task_manager',
