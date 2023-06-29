@@ -12,17 +12,17 @@
         {% csrf_token %}
         <div class="container">
           <div class="row">
-            <div class="col-4">
+            <div class="col-sm-4">
               <div class="p-2">
                 {{ filter_form.client_type|as_crispy_field }}
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
               <div class="p-2">
                 {{ filter_form.salesman|as_crispy_field }}
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
               <div class="p-2">
                 {{ filter_form.search_keyword|as_crispy_field }}
               </div>
