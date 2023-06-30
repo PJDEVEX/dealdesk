@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 from .models import Client
 from .forms import ClientForm, ClientFilterForm
 
@@ -60,3 +61,14 @@ class ClientListView(ListView):
                 'filter_form': filter_form,
                 'client_form': client_form,
             })
+
+
+class ClientCreateView(CreateView):
+    model = Client
+    template_name = "client/client_create.html"
+    form_class = ClientForm
+    success_url = reverse_lazy('client:client_list')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
