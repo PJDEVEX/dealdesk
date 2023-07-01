@@ -38,6 +38,7 @@ ALLOWED_HOSTS = [
     'dealdesk-crm.herokuapp.com',
     'localhost',
     '8000-pjdevex-dealdesk-x2u1gsmdgdp.ws-eu99.gitpod.io',
+    '8000-pjdevex-dealdesk-x2u1gsmdgdp.ws-eu101.gitpod.io',
     '127.0.0.1',
     ]
 
