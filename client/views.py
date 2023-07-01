@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from .models import Client
 from .forms import ClientForm, ClientFilterForm
 
@@ -78,3 +78,15 @@ class ClientCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class ClientUpdateView(UpdateView):
+    model = Client
+    template_name = "client/client_edit.html"
+    form_class = ClientForm
+    success_url = reverse_lazy('client:client_list')
+
+    def form_invalid(self, form):
+        for field in form.errors:
+            form[field].field.widget.attrs['class'] += ' is-invalid'
+        return self.render_to_response(self.get_context_data(form=form))

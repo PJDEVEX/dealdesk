@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from lead_master.views import LeadMaster
+from client.views import Client
 
 urlpatterns = [
     path('admin/', admin.site.urls),
