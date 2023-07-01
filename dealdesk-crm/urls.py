@@ -10,5 +10,7 @@ urlpatterns = [
     path('client/', include('client.urls')),
 
     # Authentication URLs from allauth
-    path('accounts/', include('allauth.urls')),
+    path('accounts/', include(
+        ('allauth.urls', 'account'),
+        namespace='account')),
 ]
