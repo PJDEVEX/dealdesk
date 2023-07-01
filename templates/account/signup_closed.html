@@ -1,11 +1,24 @@
-{% extends "account/base.html" %}
+{% extends "account/account_base.html" %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
 
-{% block content %}
-<h1>{% trans "Sign Up Closed" %}</h1>
+{% block account_content %}
 
-<p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+      <div class="mt-5">
+        <div class="card-body">
+          <h5 class="card-title">{% trans "Sign Up Disabled" %}</h5>
+          <p class="card-text">{% trans "We apologize for the inconvenience, the sign up option is disabled." %}</p>
+          <p class="card-text">{% trans "Please contact the administrator to create an account." %}</p>
+          <p class="card-text">{% trans "Thank you." %}</p>
+          <p class="card-text">
+            {% trans "Administrator Contact Details:" %}
+            <br>
+            {% trans "Name: John Doe" %}<br>
+            {% trans "Email: admin@example.com" %}
+          </p>
+        </div>
+      </div>
+
 {% endblock %}

@@ -37,8 +37,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'dealdesk-crm.herokuapp.com',
     'localhost',
-    '8000-pjdevex-dealdesk-x2u1gsmdgdp.ws-eu99.gitpod.io',
-    '8000-pjdevex-dealdesk-x2u1gsmdgdp.ws-eu101.gitpod.io',
+    'https://8000-pjdevex-dealdesk-x2u1gsmdgdp.ws-eu101.gitpod.io',
     '127.0.0.1',
     ]
 
@@ -57,12 +56,14 @@ INSTALLED_APPS = [
     # User authentication with email support
     'allauth.account',
     # Social account support for user authentication
-    'allauth.socialaccount',
+    # 'allauth.socialaccount',
     # Third-party "clodinary_strg app. it should come before ststicfiles
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    # cloudinary app as an installed app
+    "crispy_forms",
+    "crispy_bootstrap5",
     'cloudinary',
+    # Project apps
     'client',
     'lead_master',
     'task_manager',
@@ -89,6 +90,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'dealdesk-crm.urls'
 
+# Allowed template packs for crispy forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+# Default template pack for crispy forms
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 TEMPLATES = [
     {
@@ -182,3 +188,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Custom account adapter to disable account signup
+ACCOUNT_ADAPTER = 'dealdesk-crm.adapter.CustomAccountAdapter'

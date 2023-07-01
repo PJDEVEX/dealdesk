@@ -50,7 +50,9 @@ class Client(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'Client.Client'
+        verbose_name = 'Client'
+        verbose_name_plural = 'Clients'
+        # db_table = 'Client.Client'
         ordering = ['company_name']
 
     def __str__(self):
