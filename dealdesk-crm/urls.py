@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include, reverse_lazy
+from django.urls import path, include
 from lead_master.views import LeadMaster
 
 urlpatterns = [
@@ -10,7 +10,5 @@ urlpatterns = [
     path('client/', include('client.urls')),
 
     # Authentication URLs from allauth
-    path('accounts/', include(
-        ('allauth.urls', 'account'),
-        namespace='account')),
+    path('accounts/', include('allauth.urls')),
 ]
