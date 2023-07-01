@@ -69,6 +69,12 @@ class ClientCreateView(CreateView):
     form_class = ClientForm
     success_url = reverse_lazy('client:client_list')
 
+    def form_invalid(self, form):
+        # Override form_invalid to add styling to invalid fields
+        for field in form.errors:
+            form[field].field.widget.attrs['class'] += 'is-invalid'
+        return self.render_to_response(self.get_context_data(form=form))
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)

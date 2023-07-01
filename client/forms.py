@@ -45,7 +45,18 @@ class ClientForm(forms.ModelForm):
             'manager': 'Manager',
         }
         widgets = {
+            'company_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Company Name'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
             'client_type': forms.Select(attrs={'class': 'form-control'}),
+            'address1': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address Line 1'}),
+            'address2': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address Line 2'}),
+            'postal_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Postal Code'}),
+            'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'}),
+            'country': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Country'}),
+            'telephone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '+46 123 456 789'}),
+            'mobile': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '+46 123 456 789'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'name@example.com'}),
             'salesman': forms.Select(attrs={'class': 'form-control'}),
             'manager': forms.Select(attrs={'class': 'form-control'}),
         }
