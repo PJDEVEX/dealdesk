@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DetailView)
 from .models import Client
 from .forms import ClientForm, ClientFilterForm
 
@@ -90,3 +94,9 @@ class ClientUpdateView(UpdateView):
         for field in form.errors:
             form[field].field.widget.attrs['class'] += ' is-invalid'
         return self.render_to_response(self.get_context_data(form=form))
+
+
+class ClientDetailView(DetailView):
+    model = Client
+    template_name = 'client/client_detail.html'
+    context_object_name = 'client'

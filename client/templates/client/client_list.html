@@ -55,6 +55,7 @@
             <th>Country</th>
             <th>Salesman</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -67,10 +68,19 @@
             <td>{{ client.city }}</td>
             <td>{{ client.country }}</td>
             <td>{{ client.salesman }}</td>
-            <!-- Easy access add client icon -->
+            <!-- View client details icon -->
             <td>
-              <a href="{% url 'client:client_edit' pk=client.pk %}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a client">
+              <a href="{% url 'client:client_detail' pk=client.pk %}"
+                class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                data-bs-toggle="tooltip" data-bs-placement="bottom" title="View client details">
+                <i class="fa-solid fa-circle-info fa-2xl"></i>
+              </a>
+            </td>
+            <!-- View client details icon -->
+            <td>
+              <a href="{% url 'client:client_edit' pk=client.pk %}"
+                class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update client details">
                 <i class="fa-solid fa-square-pen fa-2xl"></i>
               </a>
 
