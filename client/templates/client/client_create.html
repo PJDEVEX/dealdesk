@@ -12,7 +12,7 @@
         <form class="form-floating" method="post" action="{% url 'client:client_new' %}">
           {% csrf_token %}
           {{ form|crispy }}
-          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="submit" class="btn btn-primary">Save</button>
         </form>
       </div>
 
