@@ -1,11 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
-from django.urls import reverse_lazy
-from django.views.generic import (
-    ListView,
-    CreateView,
-    UpdateView,
-    DetailView)
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from .models import Client
 from .forms import ClientForm, ClientFilterForm
 
@@ -44,7 +40,7 @@ class ClientListView(ListView):
 
     def get_context_data(self, **kwargs):
         """
-        context data for rendering the template
+        Add context data for rendering the template.
         """
         context = super().get_context_data(**kwargs)
         context['filter_form'] = ClientFilterForm(self.request.GET)
@@ -88,9 +84,16 @@ class ClientUpdateView(UpdateView):
     model = Client
     template_name = "client/client_edit.html"
     form_class = ClientForm
-    success_url = reverse_lazy('client:client_list')
+
+    def get_success_url(self):
+        # Get the updated client instance
+        client = self.get_object()
+        # Return the URL for the client_detail view with the client's id 
+        # as a parameter
+        return reverse('client:client_detail', kwargs={'pk': client.pk})
 
     def form_invalid(self, form):
+        # Override form_invalid to add styling to invalid fields
         for field in form.errors:
             form[field].field.widget.attrs['class'] += ' is-invalid'
         return self.render_to_response(self.get_context_data(form=form))
