@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Client Detail</h1>
+<h3>Client Details: {{ client.company_name }}</h3>
 <table class="table">
   <tbody>
     <tr>
@@ -76,11 +76,18 @@
   data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update client details">
   Edit
 </button>
+
+<!-- Delete Button -->
+<button class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>
+
 <!-- Back to client list button -->
 <button type="button" onclick="location.href='{% url 'client:client_list' %}'"
   class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
   data-bs-toggle="tooltip" data-bs-placement="bottom" title="Back to client List">
   Back to Client List
 </button>
+
+<!-- Confirmation Modal -->
+{% include 'client/confirm_delete_modal.html' %}
 
 {% endblock %}

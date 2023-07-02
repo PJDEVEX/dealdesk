@@ -3,7 +3,7 @@ from .views import (
     ClientListView,
     ClientCreateView,
     ClientUpdateView,
-    ClientDetailView
+    ClientDetailView,
     )
 
 app_name = 'client'
