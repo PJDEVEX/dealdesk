@@ -70,5 +70,17 @@
     </tr>
   </tbody>
 </table>
-<a href="{% url 'client:client_edit' client.pk %}" class="btn btn-primary">Edit</a>
+<!-- View client edit button -->
+<button type="button" onclick="location.href='{% url 'client:client_edit' client.pk %}'"
+  class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update client details">
+  Edit
+</button>
+<!-- Back to client list button -->
+<button type="button" onclick="location.href='{% url 'client:client_list' %}'"
+  class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Back to client List">
+  Back to Client List
+</button>
+
 {% endblock %}
