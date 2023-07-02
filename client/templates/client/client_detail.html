@@ -1,73 +1,74 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Client Detail</h1>
-  <table class="table">
-    <tbody>
-      <tr>
-        <th>Company Name:</th>
-        <td>{{ client.company_name }}</td>
-      </tr>
-      <tr>
-        <th>First Name:</th>
-        <td>{{ client.first_name }}</td>
-      </tr>
-      <tr>
-        <th>Last Name:</th>
-        <td>{{ client.last_name }}</td>
-      </tr>
-      <tr>
-        <th>Client Type:</th>
-        <td>{{ client.get_client_type_display }}</td>
-      </tr>
-      <tr>
-        <th>Address Line 1:</th>
-        <td>{{ client.address1 }}</td>
-      </tr>
-      <tr>
-        <th>Address Line 2:</th>
-        <td>{{ client.address2 }}</td>
-      </tr>
-      <tr>
-        <th>Postal Code:</th>
-        <td>{{ client.postal_code }}</td>
-      </tr>
-      <tr>
-        <th>City:</th>
-        <td>{{ client.city }}</td>
-      </tr>
-      <tr>
-        <th>Country:</th>
-        <td>{{ client.country }}</td>
-      </tr>
-      <tr>
-        <th>Telephone:</th>
-        <td>{{ client.telephone }}</td>
-      </tr>
-      <tr>
-        <th>Mobile:</th>
-        <td>{{ client.mobile }}</td>
-      </tr>
-      <tr>
-        <th>Email:</th>
-        <td>{{ client.email }}</td>
-      </tr>
-      <tr>
-        <th>Salesman:</th>
-        <td>{{ client.salesman }}</td>
-      </tr>
-      <tr>
-        <th>Manager:</th>
-        <td>{{ client.manager }}</td>
-      </tr>
-      <tr>
-        <th>Created On:</th>
-        <td>{{ client.created_on }}</td>
-      </tr>
-      <tr>
-        <th>Updated On:</th>
-        <td>{{ client.updated_on }}</td>
-      </tr>
-    </tbody>
-  </table>
+<h1>Client Detail</h1>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Company Name:</th>
+      <td>{{ client.company_name }}</td>
+    </tr>
+    <tr>
+      <th>First Name:</th>
+      <td>{{ client.first_name }}</td>
+    </tr>
+    <tr>
+      <th>Last Name:</th>
+      <td>{{ client.last_name }}</td>
+    </tr>
+    <tr>
+      <th>Client Type:</th>
+      <td>{{ client.get_client_type_display }}</td>
+    </tr>
+    <tr>
+      <th>Address Line 1:</th>
+      <td>{{ client.address1 }}</td>
+    </tr>
+    <tr>
+      <th>Address Line 2:</th>
+      <td>{{ client.address2 }}</td>
+    </tr>
+    <tr>
+      <th>Postal Code:</th>
+      <td>{{ client.postal_code }}</td>
+    </tr>
+    <tr>
+      <th>City:</th>
+      <td>{{ client.city }}</td>
+    </tr>
+    <tr>
+      <th>Country:</th>
+      <td>{{ client.country }}</td>
+    </tr>
+    <tr>
+      <th>Telephone:</th>
+      <td>{{ client.telephone }}</td>
+    </tr>
+    <tr>
+      <th>Mobile:</th>
+      <td>{{ client.mobile }}</td>
+    </tr>
+    <tr>
+      <th>Email:</th>
+      <td>{{ client.email }}</td>
+    </tr>
+    <tr>
+      <th>Salesman:</th>
+      <td>{{ client.salesman }}</td>
+    </tr>
+    <tr>
+      <th>Manager:</th>
+      <td>{{ client.manager }}</td>
+    </tr>
+    <tr>
+      <th>Created On:</th>
+      <td>{{ client.created_on }}</td>
+    </tr>
+    <tr>
+      <th>Updated On:</th>
+      <td>{{ client.updated_on }}</td>
+    </tr>
+  </tbody>
+</table>
+<a href="{% url 'client:client_edit' client.pk %}" class="btn btn-primary">Edit</a>
 {% endblock %}
