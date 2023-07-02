@@ -33,12 +33,12 @@
 
       </form>
 
-      <!-- Easy access add client icon -->
+      <!-- View add client button -->
       <div class="d-flex justify-content-end">
         <a href="{% url 'client:client_new' %}"
-          class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+          class="btn btn-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
           data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a client">
-          <i class="fa-solid fa-square-plus fa-2xl"></i>
+          Add
         </a>
       </div>
 
@@ -68,22 +68,21 @@
             <td>{{ client.city }}</td>
             <td>{{ client.country }}</td>
             <td>{{ client.salesman }}</td>
-            <!-- View client details icon -->
             <td>
-              <a href="{% url 'client:client_detail' pk=client.pk %}"
-                class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              <!-- View client details button -->
+              <button type="button" onclick="location.href='{% url 'client:client_detail' pk=client.pk %}'"
+                class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="View client details">
-                <i class="fa-solid fa-circle-info fa-2xl"></i>
-              </a>
+                Details
+              </button>
             </td>
-            <!-- View client details icon -->
             <td>
-              <a href="{% url 'client:client_edit' pk=client.pk %}"
-                class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              <!-- View client edit button -->
+              <button type="button" onclick="location.href='{% url 'client:client_edit' pk=client.pk %}'"
+                class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update client details">
-                <i class="fa-solid fa-square-pen fa-2xl"></i>
-              </a>
-
+                Edit
+              </button>
             </td>
           </tr>
           {% empty %}
