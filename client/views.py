@@ -1,8 +1,14 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.urls import reverse_lazy, reverse
-from django.views.generic import (ListView, CreateView, UpdateView, DetailView)
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DetailView,
+    DeleteView)
+from django.db import IntegrityError, transaction
 from .models import Client
 from .forms import ClientForm, ClientFilterForm
 
@@ -102,20 +108,6 @@ class ClientUpdateView(UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-    
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        context = self.get_context_data(object=self.object)
-        return JsonResponse({'confirm_delete_modal': render_to_string('client/confirm_delete_modal.html', context, request=request)})
-
-    def post(self, request, *args, **kwargs):
-        if 'cancel' in request.POST:
-            return redirect(reverse('client:client_detail', kwargs={'pk': self.kwargs['pk']}))
-        elif 'confirm' in request.POST:
-            self.object = self.get_object()
-            self.object.delete()
-            return redirect('client:client_list')
-        return super().post(request, *args, **kwargs)
 
 
 class ClientDetailView(DetailView):
@@ -130,3 +122,18 @@ class ClientDetailView(DetailView):
         """
         pk = self.kwargs.get('pk')
         return get_object_or_404(Client, pk=pk)
+
+
+class ClientDeleteView(DeleteView):
+    def post(self, request, *args, **kwargs):
+        client = get_object_or_404(Client, pk=self.kwargs['pk'])
+        related_sars = client.manager.sars.all()
+
+        with transaction.atomic():
+            # Delete related Sar objects
+            related_sars.delete()
+
+            # Delete the Client
+            client.delete()
+
+        return redirect('client:client_list')

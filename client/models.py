@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
+from team.models import Sar, Manager
 
 # Create your models here.
 
@@ -11,7 +12,7 @@ CLIENT_TYPE_CHOICES = [
         ("DVP", "Developer"),
         ("EPC", "EPC Contractor"),
         ("CLN", "End-Client"),
-    ]
+        ]
 
 
 class Client(models.Model):
@@ -33,15 +34,15 @@ class Client(models.Model):
     mobile = models.CharField(max_length=20, null=False)
     email = models.EmailField(null=False)
     salesman = models.ForeignKey(
-        'team.Sar',
-        on_delete=models.SET_NULL,
+        Sar,
+        on_delete=models.CASCADE,
         null=True,  # Set the foreign key field as nullable
         blank=False,  # Doesn't allow the foreign key field to be empty in forms,
         related_name='clients'
     )
     manager = models.ForeignKey(
-        'team.Manager',
-        on_delete=models.SET_NULL,
+        Manager,
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
         related_name='clients'
@@ -52,7 +53,7 @@ class Client(models.Model):
     class Meta:
         verbose_name = 'Client'
         verbose_name_plural = 'Clients'
-        # db_table = 'Client.Client'
+        db_table = 'Client.Client'
         ordering = ['company_name']
 
     def __str__(self):
