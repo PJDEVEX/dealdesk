@@ -100,6 +100,11 @@ class LeadUpdateView(UpdateView):
     template_name = "lead_master/lead_edit.html"
     form_class = LeadMasterForm
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['lead'] = self.object
+        return context
+
     def get_success_url(self):
         # Get the updated lead instance
         lead = self.get_object()

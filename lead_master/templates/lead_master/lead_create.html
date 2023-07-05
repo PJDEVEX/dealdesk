@@ -14,16 +14,19 @@ l{% extends 'base.html' %}
 
           <div class="row">
             {% for field in form %}
-              <div class="col-lg-4 col-md-6 col-sm-12">
-                {{ field|as_crispy_field }}
-              </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              {{ field|as_crispy_field }}
+            </div>
             {% endfor %}
           </div>
 
+          <!-- Save button -->
           <button type="submit" class="btn btn-primary">Save</button>
+
+          <!-- Cancel button -->
+          <a href="{% url 'lead_master:lead_list' %}" class="btn btn-secondary">Cancel</a>
         </form>
       </div>
-
     </div>
   </div>
 </div>

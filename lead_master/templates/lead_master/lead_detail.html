@@ -5,7 +5,7 @@
 <div class="col-lg-12">
   <div class="row">
     <div class="col-12">
-      <h3 class="bg-body">Project Details{{ lead.name }} </h3>
+      <h3 class="bg-body">Details of {{ lead.name }} Projct</h3>
 
       <div class="container mt-4">
         <div class="card">
@@ -66,10 +66,10 @@
                 </tr>
               </tbody>
             </table>
+
             <!-- View Lead edit button -->
             <button type="button" onclick="location.href='{% url 'lead_master:lead_edit' pk=lead.pk %}'"
-              class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              data-bs-toggle="tooltip" data-bs-placement="bottom" title="View client edit">
+              class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
               Edit
             </button>
 
@@ -79,14 +79,12 @@
 
             <!-- Back to client list button -->
             <button type="button" onclick="location.href='{% url 'lead_master:lead_list' %}'"
-              class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              data-bs-toggle="tooltip" data-bs-placement="bottom" title="Back to Project List">
+              class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
               Back to Project List
             </button>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
