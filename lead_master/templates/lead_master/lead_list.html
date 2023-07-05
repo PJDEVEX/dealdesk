@@ -29,6 +29,13 @@
             </form>
 
             <!-- View add lead button -->
+            <div class="d-flex justify-content-end">
+                <a href="{% url 'lead_master:lead_new' %}"
+                  class="btn btn-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a client">
+                  Add
+                </a>
+              </div>
             <!-- Lead List -->
             <table class="table bg-body-tertiary table-hover">
                 <thead>

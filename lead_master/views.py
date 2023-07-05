@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView
-from .forms import LeadMasterFilterForm
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView, CreateView
+from .forms import LeadMasterFilterForm, LeadMasterForm
 from .models import LeadMaster
 
 
@@ -55,3 +56,20 @@ class LeadListView(ListView):
         context = super().get_context_data(**kwargs)
         context['filter_form'] = LeadMasterFilterForm(self.request.GET)
         return context
+
+
+class LeadCreateView(CreateView):
+    model = LeadMaster
+    form_class = LeadMasterForm
+    template_name = 'lead_master/lead_create.html'
+    success_url = reverse_lazy('lead_master:lead_list')
+
+    def form_invalid(self, form):
+        # Add styling to invalid fields
+        for field in form.errors:
+            form[field].field.widget.attrs['class'] += ' is-invalid'
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
