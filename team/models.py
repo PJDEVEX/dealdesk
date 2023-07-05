@@ -2,7 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
+
+def get_manager():
+    return 2
 
 
 class Manager(models.Model):
@@ -28,9 +30,8 @@ class Sar(models.Model):
     email = models.EmailField()
     manager = models.ForeignKey(
         Manager,
-        on_delete=models.CASCADE,
-        related_name='sars',
-        null=True)
+        on_delete=models.SET(get_manager),
+        related_name='sars',)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 

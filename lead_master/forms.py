@@ -66,11 +66,12 @@ class LeadMasterForm(forms.ModelForm):
             'manager': 'Manager',
             'type_of_construction': 'Type of Construction',
             'category': 'Category',
-            'lead_status': 'Lead Status',
+            'lead_status': 'Project Status',
             'est_closing_date': 'Estimated Closing Date',
             'est_date_of_delivery': 'Estimated Date of Delivery',
             'potential_value': 'Potential Value',
             'winning_chance': 'Winning Chance',
+            'forecast_pxp': 'Forecasted PXP',
         }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name', 'tabindex': '1'}),
@@ -86,6 +87,7 @@ class LeadMasterForm(forms.ModelForm):
             'est_date_of_delivery': forms.DateInput(attrs={'class': 'form-control', 'tabindex': '11'}),
             'potential_value': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Potential Value', 'tabindex': '12'}),
             'winning_chance': forms.Select(attrs={'class': 'form-control', 'tabindex': '13'}),
+            'forecast_pxp': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Forecasted PXP', 'tabindex': '14'}),
         }
 
     def __init__(self, *args, **kwargs):

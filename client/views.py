@@ -125,15 +125,6 @@ class ClientDetailView(DetailView):
 
 
 class ClientDeleteView(DeleteView):
-    def post(self, request, *args, **kwargs):
-        client = get_object_or_404(Client, pk=self.kwargs['pk'])
-        related_sars = client.manager.sars.all()
-
-        with transaction.atomic():
-            # Delete related Sar objects
-            related_sars.delete()
-
-            # Delete the Client
-            client.delete()
-
-        return redirect('client:client_list')
+    model = Client
+    template_name = 'client/client_delete.html'
+    success_url = reverse_lazy('client:client_list')

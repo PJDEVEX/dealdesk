@@ -4,7 +4,16 @@ from cloudinary.models import CloudinaryField
 from django.utils import timezone
 from team.models import Sar, Manager
 
+
+def get_manager():
+    return 2
+
+
+def get_salesman():
+    return 2
+
 # Create your models here.
+
 
 CLIENT_TYPE_CHOICES = [
         ("ARC", "Architect"),
@@ -35,16 +44,14 @@ class Client(models.Model):
     email = models.EmailField(null=False)
     salesman = models.ForeignKey(
         Sar,
-        on_delete=models.CASCADE,
-        null=True,  # Set the foreign key field as nullable
-        blank=False,  # Doesn't allow the foreign key field to be empty in forms,
+        on_delete=models.SET(get_salesman),
+        # null=True,  # Set the foreign key field as nullable
+        # blank=False,  # Doesn't allow the foreign key field to be empty in forms,
         related_name='clients'
     )
     manager = models.ForeignKey(
         Manager,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
+        on_delete=models.SET(get_manager),
         related_name='clients'
     )
     created_on = models.DateTimeField(auto_now_add=True)

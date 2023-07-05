@@ -33,7 +33,7 @@ class TaskManager(models.Model):
         null=False)
     assigned_to = models.ForeignKey(
         'team.Sar',
-        on_delete=models.CASCADE,
+        on_delete=models.SET('Salesman to be allocated'),
         related_name='tasks')
 
     class Meta:

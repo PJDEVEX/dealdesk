@@ -32,10 +32,20 @@
             <table class="table bg-body-tertiary table-hover">
                 <thead>
                     <tr>
-                        <th>Lead Name</th>
+                        <th>Name</th>
                         <th>Client</th>
                         <th>Salesman</th>
-                        <!-- Add more column headers here if needed -->
+                        <th>Location</th>
+                        <th>Brand</th>
+                        <th>Manager</th>
+                        <th>Construction Type</th>
+                        <th>Category</th>
+                        <th>Project Status</th>
+                        <th>Est Closing Date</th>
+                        <th>Est Date of Delivery</th>
+                        <th>Potential Value</th>
+                        <th>Winning Chance</th>
+                        <th>Forecast PxP</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -46,7 +56,17 @@
                         <td>{{ lead.name }}</td>
                         <td>{{ lead.client }}</td>
                         <td>{{ lead.salesman }}</td>
-                        <!-- Add more columns with lead attributes here if needed -->
+                        <td>{{ lead.location }}</td>
+                        <td>{{ lead.brand }}</td>
+                        <td>{{ lead.manager }}</td>
+                        <td>{{ lead.type_of_construction }}</td>
+                        <td>{{ lead.category }}</td>
+                        <td>{{ lead.lead_status }}</td>
+                        <td>{{ lead.est_closing_date }}</td>
+                        <td>{{ lead.est_date_of_delivery }}</td>
+                        <td>{{ lead.potential_value }}</td>
+                        <td>{{ lead.winning_chance }}</td>
+                        <td>{{ lead.forecast_pxp }}</td>
                         <td>
                             <!-- View lead details button -->
                         </td>

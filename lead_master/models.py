@@ -4,6 +4,28 @@ from cloudinary.models import CloudinaryField
 from django.utils import timezone
 from decimal import Decimal
 
+
+def get_manager():
+    return 2
+
+
+def get_salesman():
+    return 2
+
+
+def get_client():
+    return 3
+
+
+def get_brand():
+    return 2
+
+
+def get_category():
+    return 2
+
+
+
 # Create your models here.
 
 LEAD_STATUS = [
@@ -82,25 +104,25 @@ class LeadMaster(models.Model):
     name = models.CharField(max_length=100, null=False)
     client = models.ForeignKey(
         'client.Client',
-        on_delete=models.CASCADE,
+        on_delete=models.SET(get_client),
         related_name='lead_masters'
     )
     location = models.CharField(max_length=55, null=False)
     brand = models.ForeignKey(
         Brand,
-        on_delete=models.CASCADE,
+        on_delete=models.SET(get_brand),
         related_name='lead_masters'
     )
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     salesman = models.ForeignKey(
         'team.Sar',
-        on_delete=models.CASCADE,
+        on_delete=models.SET(get_salesman),
         related_name='lead_masters',
     )
     manager = models.ForeignKey(
         'team.Manager',
-        on_delete=models.CASCADE,
+        on_delete=models.SET(get_manager),
         related_name='lead_masters'
     )
     type_of_construction = models.CharField(
@@ -110,7 +132,7 @@ class LeadMaster(models.Model):
     )
     category = models.ForeignKey(
         Category,
-        on_delete=models.CASCADE,
+        on_delete=models.SET(get_category),
         related_name='lead_masters'
     )
     lead_status = models.TextField(
