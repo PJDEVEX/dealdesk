@@ -26,9 +26,6 @@ def get_category():
     return 2
 
 
-
-# Create your models here.
-
 LEAD_STATUS = [
             ("Atv", "Active"),
             ("O/h", "On hold"),
@@ -54,15 +51,6 @@ WINNING_CHANCE = [
 class Brand(models.Model):
     """
     Represents a brand model.
-
-    This class defines the Brand model, which represents a brand
-    in the system. It has fields to store the brand ID,
-    brand name, and timestamps for creation and updates.
-
-    Attributes:
-        brand (str): The name or description of the brand.
-        created_on (DateTimeField): timestamp of when brand was created.
-        updated_on (DateTimeField): timestamp of last update to the brand.
     """
     brand = models.CharField(max_length=55, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -78,16 +66,6 @@ class Brand(models.Model):
 class Category(models.Model):
     """
     Represents a category model.
-
-    This class defines the Category model, which is used to categorize
-    various items or entities in the system. It has fields to store
-    the category ID, category name, and timestamps for creation and
-    updates.
-
-    Attributes:
-        category (str): The name or description of the category.
-        created_on (DateTimeField): timestamp when the category was created.
-        updated_on (DateTimeField): timestamp of last update to the category.
     """
     category = models.CharField(max_length=55, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -95,7 +73,7 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['category']
-        verbose_name_plural = "categories"  # Add pural verbose for the model
+        verbose_name_plural = "categories"
 
     def __str__(self):
         return self.category
@@ -144,7 +122,10 @@ class LeadMaster(models.Model):
     )
     est_closing_date = models.DateField(null=False)
     est_date_of_delivery = models.DateField()
-    potential_value = models.FloatField(null=False)
+    potential_value = models.DecimalField(
+        max_digits=10,
+        decimal_places=0,
+        null=False)
     winning_chance = models.DecimalField(
         max_digits=3,
         decimal_places=2,
@@ -153,7 +134,7 @@ class LeadMaster(models.Model):
     )
     forecast_pxp = models.DecimalField(
         max_digits=10,
-        decimal_places=2,
+        decimal_places=0,
         null=True,
         blank=True
     )
@@ -173,9 +154,7 @@ class LeadMaster(models.Model):
         Returns:
             None
         """
-        # Convert potential value to deciamal
-        potential_value_decimal = Decimal(str(self.potential_value))
-        self.forecast_pxp = potential_value_decimal * self.winning_chance
+        self.forecast_pxp = self.potential_value * self.winning_chance
         super().save(*args, **kwargs)
 
     class Meta:
