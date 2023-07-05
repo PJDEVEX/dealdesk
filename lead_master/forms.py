@@ -19,10 +19,6 @@ class LeadMasterFilterForm(forms.Form):
         widget=forms.Select(attrs={'class': 'form-control'}),
         required=False
     )
-    search_keyword = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=False
-    )
     type_of_construction = forms.ChoiceField(
         choices=[('', 'All')] + TYPE_OF_CONSTRUCTION,
         widget=forms.Select(attrs={'class': 'form-control'}),
@@ -46,6 +42,10 @@ class LeadMasterFilterForm(forms.Form):
     category = forms.ModelChoiceField(
         queryset=Category.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control'}),
+        required=False
+    )
+    search_keyword = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
         required=False
     )
 
