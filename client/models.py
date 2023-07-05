@@ -5,14 +5,13 @@ from django.utils import timezone
 from team.models import Sar, Manager
 
 
+#  Get a default ID
 def get_manager():
     return 2
 
 
 def get_salesman():
     return 2
-
-# Create your models here.
 
 
 CLIENT_TYPE_CHOICES = [

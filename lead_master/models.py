@@ -5,6 +5,7 @@ from django.utils import timezone
 from decimal import Decimal
 
 
+#  Get a default ID
 def get_manager():
     return 2
 

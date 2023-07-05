@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 
+#  Get a default ID
 def get_manager():
     return 2
 

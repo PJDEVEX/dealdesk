@@ -3,7 +3,11 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
 
-# Create your models here.
+
+#  Get a default ID
+def get_salesman():
+    return 2
+
 
 STATUS_CHOICES = [
     ("TBD", "To Do"),
@@ -33,7 +37,7 @@ class TaskManager(models.Model):
         null=False)
     assigned_to = models.ForeignKey(
         'team.Sar',
-        on_delete=models.SET('Salesman to be allocated'),
+        on_delete=models.SET(get_salesman),
         related_name='tasks')
 
     class Meta:
