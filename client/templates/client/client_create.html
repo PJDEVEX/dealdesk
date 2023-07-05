@@ -11,7 +11,15 @@
       <div class="container mt-4">
         <form class="form-floating" method="post" action="{% url 'client:client_new' %}">
           {% csrf_token %}
-          {{ form|crispy }}
+
+          <div class="row">
+            {% for field in form %}
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                {{ field|as_crispy_field }}
+              </div>
+            {% endfor %}
+          </div>
+
           <button type="submit" class="btn btn-primary">Save</button>
         </form>
       </div>
