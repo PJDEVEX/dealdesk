@@ -31,11 +31,11 @@
             <!-- View add lead button -->
             <div class="d-flex justify-content-end">
                 <a href="{% url 'lead_master:lead_new' %}"
-                  class="btn btn-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a client">
-                  Add
+                    class="btn btn-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a client">
+                    Add
                 </a>
-              </div>
+            </div>
             <!-- Lead List -->
             <table class="table bg-body-tertiary table-hover">
                 <thead>
@@ -77,9 +77,21 @@
                         <td>{{ lead.forecast_pxp|intcomma }}</td>
                         <td>
                             <!-- View lead details button -->
+                            <button type="button"
+                                onclick="location.href='{% url 'lead_master:lead_detail' pk=lead.pk %}'"
+                                class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="View lead details">
+                                Details
+                            </button>
                         </td>
                         <td>
                             <!-- View lead edit button -->
+                            <button type="button"
+                                onclick="location.href='{% url 'lead_master:lead_edit' pk=lead.pk %}'"
+                                class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="View client edit">
+                                Edit
+                            </button>
                         </td>
                     </tr>
                     {% empty %}

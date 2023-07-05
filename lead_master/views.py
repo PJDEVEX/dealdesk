@@ -1,6 +1,12 @@
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, CreateView
+from django.views.generic import (
+    ListView,
+    CreateView,
+    DetailView,
+    UpdateView,
+    )
 from .forms import LeadMasterFilterForm, LeadMasterForm
 from .models import LeadMaster
 
@@ -66,6 +72,43 @@ class LeadCreateView(CreateView):
 
     def form_invalid(self, form):
         # Add styling to invalid fields
+        for field in form.errors:
+            form[field].field.widget.attrs['class'] += ' is-invalid'
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class LeadDetailView(DetailView):
+    model = LeadMaster
+    template_name = 'lead_master/lead_detail.html'
+    context_object_name = 'lead'
+
+    def get_object(self, queryset=None):
+        """
+        Retrieve the object based on the pk parameter.
+        Returns a 404 response if the object doesn't exist.
+        """
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(LeadMaster, pk=pk)
+
+
+class LeadUpdateView(UpdateView):
+    model = LeadMaster
+    template_name = "lead_master/lead_edit.html"
+    form_class = LeadMasterForm
+
+    def get_success_url(self):
+        # Get the updated lead instance
+        lead = self.get_object()
+        # Return the URL for the lead_detail view with the lead's id 
+        # as a parameter
+        return reverse('lead_master:lead_detail', kwargs={'pk': lead.pk})
+
+    def form_invalid(self, form):
+        # Override form_invalid to add styling to invalid fields
         for field in form.errors:
             form[field].field.widget.attrs['class'] += ' is-invalid'
         return self.render_to_response(self.get_context_data(form=form))
