@@ -6,6 +6,7 @@ from django.views.generic import (
     CreateView,
     DetailView,
     UpdateView,
+    DeleteView,
     )
 from .forms import LeadMasterFilterForm, LeadMasterForm
 from .models import LeadMaster
@@ -39,7 +40,9 @@ class LeadListView(ListView):
         if salesman:
             queryset = queryset.filter(salesman=salesman)
         if type_of_construction:
-            queryset = queryset.filter(type_of_construction=type_of_construction)
+            queryset = queryset.filter(
+                type_of_construction=type_of_construction
+                )
         if lead_status:
             queryset = queryset.filter(lead_status=lead_status)
         if winning_chance:
@@ -108,7 +111,7 @@ class LeadUpdateView(UpdateView):
     def get_success_url(self):
         # Get the updated lead instance
         lead = self.get_object()
-        # Return the URL for the lead_detail view with the lead's id 
+        # Return the URL for the lead_detail view with the lead's id
         # as a parameter
         return reverse('lead_master:lead_detail', kwargs={'pk': lead.pk})
 
@@ -121,3 +124,9 @@ class LeadUpdateView(UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class LeadDeleteView(DeleteView):
+    model = LeadMaster
+    template_name = "lead_master/lead_delete.html"
+    success_url = reverse_lazy('lead_master:lead_list')
