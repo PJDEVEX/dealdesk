@@ -44,15 +44,11 @@
                         <th>Name</th>
                         <th>Client</th>
                         <th>Salesman</th>
-                        <th>Location</th>
                         <th>Brand</th>
-                        <th>Manager</th>
                         <th>Construction Type</th>
                         <th>Category</th>
                         <th>Project Status</th>
                         <th>Est Closing Date</th>
-                        <th>Est Date of Delivery</th>
-                        <th>Potential Value ($)</th>
                         <th>Winning Chance (%)</th>
                         <th>Forecast PxP ($)</th>
                         <th></th>
@@ -65,15 +61,11 @@
                         <td>{{ lead.name }}</td>
                         <td>{{ lead.client }}</td>
                         <td>{{ lead.salesman }}</td>
-                        <td>{{ lead.location }}</td>
                         <td>{{ lead.brand }}</td>
-                        <td>{{ lead.manager }}</td>
                         <td>{{ lead.get_type_of_construction_display }}</td>
                         <td>{{ lead.category }}</td>
                         <td>{{ lead.get_lead_status_display }}</td>
                         <td>{{ lead.est_closing_date }}</td>
-                        <td>{{ lead.est_date_of_delivery }}</td>
-                        <td>{{ lead.potential_value|intcomma }}</td>
                         <td>{{ lead.get_winning_chance_display }}</td>
                         <td>{{ lead.forecast_pxp|intcomma }}</td>
                         <td>
