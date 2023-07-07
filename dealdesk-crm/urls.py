@@ -9,6 +9,7 @@ urlpatterns = [
     # URLs for the apps
     path('lead_master/', include('lead_master.urls')),
     path('client/', include('client.urls')),
+    path('task_manager/', include('task_manager.urls')),
 
     # Authentication URLs from allauth
     path('accounts/', include('allauth.urls')),

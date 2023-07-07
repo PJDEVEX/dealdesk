@@ -29,16 +29,18 @@ class TaskManager(models.Model):
         choices=STATUS_CHOICES,
         default="To Do",
         null=False
-        )
+    )
     priority = models.CharField(
         max_length=50,
         choices=PRIORITY_CHOICES,
         default="Normal",
-        null=False)
+        null=False
+    )
     assigned_to = models.ForeignKey(
         'team.Sar',
         on_delete=models.SET(get_salesman),
-        related_name='tasks')
+        related_name='tasks'
+    )
 
     class Meta:
         ordering = ['due_date']

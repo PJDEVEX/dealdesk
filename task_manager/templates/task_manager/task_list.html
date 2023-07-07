@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+{% block content %}
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="bg-body">Task List</h3>
+
+            <!-- Filter Form -->
+            <form class="mb-3" method="get" action="{% url 'task_manager:task_list' %}">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="row">
+                        {% for field in filter_form %}
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="p-2">
+                                {{ field|as_crispy_field }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-secondary ms-2">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+
+            <!-- Task List -->
+            <table class="table bg-body-tertiary table-hover">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Assigned To</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.due_date }}</td>
+                        <td>{{ task.status }}</td>
+                        <td>{{ task.priority }}</td>
+                        <td>{{ task.assigned_to }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">No tasks found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link"
+                            href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+                    {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                    <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
