@@ -46,8 +46,8 @@
                         <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
                         <td>{{ task.due_date }}</td>
-                        <td>{{ task.status }}</td>
-                        <td>{{ task.priority }}</td>
+                        <td>{{ task.get_status_display }}</td>
+                        <td>{{ task.get_priority_display }}</td>
                         <td>{{ task.assigned_to }}</td>
                     </tr>
                     {% empty %}
