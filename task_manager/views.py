@@ -1,6 +1,10 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.shortcuts import render, get_list_or_404
+from django.urls import reverse_lazy, reverse
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    )
 from .models import TaskManager
 from .forms import TaskManagerFilterForm, TaskManagerForm
 
@@ -45,6 +49,22 @@ class TaskCreateView(CreateView):
     model = TaskManager
     form_class = TaskManagerForm
     template_name = 'task_manager/task_create.html'
+    success_url = reverse_lazy('task_manager:task_list')
+
+    def form_invalid(self, form):
+        # Add styling to invalid fields
+        for field in form.errors:
+            form[field].field.widget.attrs['class'] += ' is-invalid'
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+
+class TaskUpdateView(UpdateView):
+    model = TaskManager
+    form_class = TaskManagerForm
+    template_name = 'task_manager/task_edit.html'
     success_url = reverse_lazy('task_manager:task_list')
 
     def form_invalid(self, form):
