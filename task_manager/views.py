@@ -4,6 +4,7 @@ from django.views.generic import (
     ListView,
     CreateView,
     UpdateView,
+    DeleteView,
     )
 from .models import TaskManager
 from .forms import TaskManagerFilterForm, TaskManagerForm
@@ -42,6 +43,7 @@ class TaskListView(ListView):
         """
         context = super().get_context_data(**kwargs)
         context['filter_form'] = TaskManagerFilterForm(self.request.GET)
+        context['task'] = TaskManager.objects.first()
         return context
 
 
@@ -75,3 +77,9 @@ class TaskUpdateView(UpdateView):
 
     def form_valid(self, form):
         return super().form_valid(form)
+
+
+class TaskDeleteView(DeleteView):
+    model = TaskManager
+    template_name = "task_manager/task_delete.html"
+    success_url = reverse_lazy('task_manager:task_list')
