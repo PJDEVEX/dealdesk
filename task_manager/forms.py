@@ -42,7 +42,7 @@ class TaskManagerForm(forms.ModelForm):
         }
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title', 'tabindex': '1'}),
-            'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Description', 'tabindex': '2'}),
+            'description': forms.Textarea(attrs={'class': 'form-control form-control-lg', 'rows': '3', 'style': 'font-size: 16px', 'placeholder': 'Description', 'tabindex': '2'}),
             'due_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'tabindex': '3'}),
             'status': forms.Select(attrs={'class': 'form-control', 'tabindex': '4'}),
             'priority': forms.Select(attrs={'class': 'form-control', 'tabindex': '5'}),
