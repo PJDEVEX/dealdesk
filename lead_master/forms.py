@@ -1,6 +1,11 @@
 from django import forms
 from django.forms import DateInput
-from .models import LeadMaster, TYPE_OF_CONSTRUCTION, LEAD_STATUS, WINNING_CHANCE
+from .models import (
+    LeadMaster,
+    TYPE_OF_CONSTRUCTION,
+    LEAD_STATUS,
+    WINNING_CHANCE
+    )
 from client.models import Client
 from team.models import Sar, Manager
 from .models import Brand, Category
