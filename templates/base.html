@@ -47,21 +47,21 @@
         <!-- branding -->
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 rounded-bottom-5" href="#">
             <div class="card" style="width: 8rem;">
-              <img src="https://res.cloudinary.com/pjdevex/image/upload/v1687544628/static/dealdesk_crm_logo/dd_hr_light_rnrq97.webp" alt="DealDesk | CRM" class="card-img-top rounded">
+                <img src="https://res.cloudinary.com/pjdevex/image/upload/v1687544628/static/dealdesk_crm_logo/dd_hr_light_rnrq97.webp"
+                    alt="DealDesk | CRM" class="card-img-top rounded">
             </div>
-          </a>
-          
-          
+        </a>
+
+
 
         <!-- Toggle navbar -->
         <ul class="navbar-nav flex-row d-md-none">
             <li class="nav-item text-nowrap">
-                <button class="nav-link px-3" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="nav-link px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu"
+                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                  
+
             </li>
         </ul>
     </header>
@@ -91,7 +91,48 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
 
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="{% static 'script/color-mode.js' %}"></script>
+
+    <!-- Dashboard chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Dashboard chart js -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const ctx = document.getElementById('lead-winning-chance-chart');
+        const labels = {{ winning_chance_labels|safe }};
+        const data = {{ winning_chance_data|safe }};
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '{{ labels|safe }}',
+                    data: data,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+
 
 </body>
 
