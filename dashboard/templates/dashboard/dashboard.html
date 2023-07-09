@@ -1,6 +1,93 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Dashboard</h1>
-  <p>Here it goes...</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Container 1 - 20% height and 100% width -->
+      <div class="h-20">
+        <!-- Content for Container 1 -->
+        <h1>Container 1</h1>
+        <div class="row">
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card mb-4">
+              <div class="card-body bg-primary bg-opacity-25 border-0 rounded"> <!-- Added border-0 and rounded classes -->
+                <h5 class="card-title">Card 1</h5>
+                <p class="card-text fs-3 fw-semibold text-center">30</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card mb-4">
+              <div class="card-body bg-primary bg-opacity-25 border-0 rounded"> <!-- Added border-0 and rounded classes -->
+                <h5 class="card-title">Card 2</h5>
+                <p class="card-text fs-3 fw-semibold text-center">25</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card mb-4">
+              <div class="card-body bg-primary bg-opacity-25 border-0 rounded"> <!-- Added border-0 and rounded classes -->
+                <h5 class="card-title">Card 3</h5>
+                <p class="card-text fs-3 fw-semibold text-center">20</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card mb-4">
+              <div class="card-body bg-primary bg-opacity-25 border-0 rounded"> <!-- Added border-0 and rounded classes -->
+                <h5 class="card-title">Card 4</h5>
+                <p class="card-text fs-3 fw-semibold text-center">15</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card mb-4">
+              <div class="card-body bg-primary bg-opacity-25 border-0 rounded"> <!-- Added border-0 and rounded classes -->
+                <h5 class="card-title">Card 5</h5>
+                <p class="card-text fs-3 fw-semibold text-center">10</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card mb-4">
+              <div class="card-body bg-primary bg-opacity-25 border-0 rounded"> <!-- Added border-0 and rounded classes -->
+                <h5 class="card-title">Card 6</h5>
+                <p class="card-text fs-3 fw-semibold text-center">5</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Container 2 - 20% height and 100% width with desired margins -->
+      <div class="h-20 mt-4">
+        <!-- Content for Container 2 -->
+        <h1>Container 2</h1>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title">Card 1</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title">Card 2</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
