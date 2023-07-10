@@ -40,7 +40,7 @@ TYPE_OF_CONSTRUCTION = [
 
 WINNING_CHANCE = [
     (Decimal('0.00'), "0% - No Chance"),
-    (Decimal('0.20'), "20% - Very Low, 20%"),
+    (Decimal('0.20'), "20% - Very Low"),
     (Decimal('0.50'), "50% - May be"),
     (Decimal('0.75'), "75% - Highly Likely"),
     (Decimal('0.90'), "90% - WON PENDING PO"),
