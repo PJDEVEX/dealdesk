@@ -160,7 +160,7 @@
                     }
                   });
                 </script>
-                
+
               </div>
             </div>
           </div>
@@ -168,8 +168,61 @@
           <div class="col-lg-6 col-md-6">
             <div class="card mb-4">
               <div class="card-body">
-                <h5 class="card-title">Sales Forecast</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                <h5 class="card-title">Sales Forecast ($)</h5>
+                <canvas id="lead_forecast_pxp_chart" width="400" height="300"></canvas>
+          
+                <!-- Script for Sales forecast chart -->
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                  const forecastPxpChartCtx = document.getElementById('lead_forecast_pxp_chart');
+                
+                  new Chart(forecastPxpChartCtx, {
+                    type: 'line',
+                    data: {
+                      labels: [{% for label in sales_forecast_labels %}'{{ label }}',{% endfor %}],
+                      datasets: [{
+                        label: 'Sales Forecast',
+                        data: [{% for value in sales_forecast_values %}{{ value }}, {% endfor %}],
+                        fill: false,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        x: {
+                          beginAtZero: true,
+                          ticks: {
+                            font: {
+                              size: 14 // font size for y-axis
+                            }
+                          },
+                          grid: {
+                            display: false // Hide the x-axis grid lines
+                          }
+                        },
+                        y: {
+                          beginAtZero: true,
+                          ticks: {
+                            font: {
+                              size: 14 // font size for y-axis
+                            }
+                          },
+                          grid: {
+                            display: false // Hide the y-axis grid lines
+                          }
+                        }
+                      },
+                      plugins: {
+                        legend: {
+                          display: false // Hide the legend
+                        }
+                      }
+                    }
+                  });
+                </script>
+                
+                
               </div>
             </div>
           </div>

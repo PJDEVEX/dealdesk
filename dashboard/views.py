@@ -3,6 +3,8 @@ from django.views.generic import TemplateView
 from lead_master.models import LeadMaster, WINNING_CHANCE
 from django.db import models
 from decimal import Decimal
+from django.db.models.functions import TruncMonth
+from django.db.models import Sum
 
 
 class DashboardView(TemplateView):
@@ -53,4 +55,14 @@ class DashboardView(TemplateView):
         context['winning_chance_labels'] = winning_chance_labels
         context['winning_chance_data'] = winning_chance_data
 
+        # Sales Forecast
+        sales_forecast_data = LeadMaster.objects.annotate(month=TruncMonth('est_closing_date')).values('month').annotate(total_forecast_pxp=Sum('forecast_pxp')).order_by('month')
+        sales_forecast_labels = [data['month'].strftime('%B %Y') for data in sales_forecast_data]
+        sales_forecast_values = [data['total_forecast_pxp'] for data in sales_forecast_data]
+
+        context['sales_forecast_element_id'] = 'lead_forecast_pxp_chart'
+        context['sales_forecast_labels'] = sales_forecast_labels
+        context['sales_forecast_values'] = sales_forecast_values
+
         return context
+
