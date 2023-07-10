@@ -1,9 +1,6 @@
-import json
-from django.core.serializers.json import DjangoJSONEncoder
-from django.utils.html import json_script
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from lead_master.models import LeadMaster
+from lead_master.models import LeadMaster, WINNING_CHANCE
 from django.db import models
 from decimal import Decimal
 
@@ -41,28 +38,18 @@ class DashboardView(TemplateView):
 
         # Lead Winning Chance Distribution
         winning_chance_distribution = LeadMaster.objects.values('winning_chance').annotate(count=models.Count('id'))
-        winning_chance_labels = ['No Chance(0%)', 'Very Low(20%)', 'May be(50%)', 'Highly Likely(75%)', 'WON PENDING PO(90%)', 'WON with PO(100%)']
-        winning_chance_data = [0, 0, 0, 0, 0, 0]
+        winning_chance_labels = [str(chance[1]) for chance in WINNING_CHANCE]
+        winning_chance_data = [0] * len(winning_chance_labels)
 
         for item in winning_chance_distribution:
             winning_chance = item['winning_chance']
             count = item['count']
             
-            if winning_chance == Decimal('0.00'):
-                index = 0
-            elif winning_chance == Decimal('0.20'):
-                index = 1
-            elif winning_chance == Decimal('0.50'):
-                index = 2
-            elif winning_chance == Decimal('0.75'):
-                index = 3
-            elif winning_chance == Decimal('0.90'):
-                index = 4
-            elif winning_chance == Decimal('1.00'):
-                index = 5
-            
-            winning_chance_data[index] += count
+            index = next((i for i, chance in enumerate(WINNING_CHANCE) if chance[0] == winning_chance), None)
+            if index is not None:
+                winning_chance_data[index] += count
 
+        context['winning_chance_element_id'] = 'lead_winning_chance_chart'
         context['winning_chance_labels'] = winning_chance_labels
         context['winning_chance_data'] = winning_chance_data
 
