@@ -38,50 +38,55 @@
             </div>
 
             <!-- Task List -->
-            <table class="table bg-body-tertiary table-hover">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Due Date</th>
-                        <th>Status</th>
-                        <th>Priority</th>
-                        <th>Assigned To</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for task in tasks %}
-                    <tr>
-                        <td>{{ task.title }}</td>
-                        <td>{{ task.description }}</td>
-                        <td>{{ task.due_date }}</td>
-                        <td>{{ task.get_status_display }}</td>
-                        <td>{{ task.get_priority_display }}</td>
-                        <td>{{ task.assigned_to }}</td>
-                        <td>
-                            <!-- Task edit button -->
-                            <button type="button"
-                                onclick="location.href='{% url 'task_manager:task_edit' pk=task.pk %}'"
-                                class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                                Edit
-                            </button>
-                        </td>
-                        <td>
-                            <!-- Delete Button -->
-                            <button
-                                class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                                data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>
-                        </td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="6">No tasks found.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="container mt-5">
+                <div class="container table-responsive overflow-x-scroll">
+                    <table class="table bg-body-tertiary table-hover">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th>Priority</th>
+                                <th>Assigned To</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in tasks %}
+                            <tr>
+                                <td>{{ task.title }}</td>
+                                <td>{{ task.description }}</td>
+                                <td>{{ task.due_date }}</td>
+                                <td>{{ task.get_status_display }}</td>
+                                <td>{{ task.get_priority_display }}</td>
+                                <td>{{ task.assigned_to }}</td>
+                                <td>
+                                    <!-- Task edit button -->
+                                    <button type="button"
+                                        onclick="location.href='{% url 'task_manager:task_edit' pk=task.pk %}'"
+                                        class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                        Edit
+                                    </button>
+                                </td>
+                                <td>
+                                    <!-- Delete Button -->
+                                    <button
+                                        class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                                        data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="6">No tasks found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
 
             <!-- Pagination -->
             {% if is_paginated %}
