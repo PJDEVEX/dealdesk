@@ -31,20 +31,22 @@
             Clients
           </a>
         </li>
-      </ul>
+      <!-- </ul> -->
       <hr class="mt-3">
       <!-- Login management -->
-      <ul class="nav flex-column mb-auto">
-        <li class="nav-item">
-          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="{% url 'account_login' %}">
-            <i class="fa-solid fa-arrow-right-to-bracket"></i>
-            Signin
-          </a>
-        </li>
+      <!-- <ul class="nav flex-column"> -->
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="{% url 'account_logout' %}">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
             Signout
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="{% url 'account_login' %}">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Signin
           </a>
         </li>
         <li class="nav-item">
@@ -53,6 +55,7 @@
             Signup
           </a>
         </li>
+        {% endif %}
       </ul>
     </div>
   </div>
