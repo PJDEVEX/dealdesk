@@ -76,7 +76,7 @@ INSTALLED_APPS = [
 # Assign the site ID to 1 as per Django convention in the settings file.
 SITE_ID = 1
 
-# Define login and logout redirect URLs
+# Account settings for authentication and redirection
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
