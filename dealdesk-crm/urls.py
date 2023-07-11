@@ -29,4 +29,3 @@ urlpatterns = [
     # Authentication URLs from allauth
     path('accounts/', include('allauth.urls')),
 ]
-
