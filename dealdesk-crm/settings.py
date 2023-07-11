@@ -31,19 +31,17 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # Set DEBUG mode based on the 'DEVELOPMENT' environment variable
 development = os.environ.get('DEVELOPMENT', False)
-# DEBUG = development
 DEBUG = True
-# List of allowed hosts for the Django application.
+
+# List of allowed hosts for the Django application
 ALLOWED_HOSTS = [
     'dealdesk-crm.herokuapp.com',
     'localhost',
     '8000-pjdevex-dealdesk-x2u1gsmdgdp.ws-eu101.gitpod.io',
     '127.0.0.1',
-    ]
-
+]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,21 +49,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
-    # humanization utilities for better readability
-    'django.contrib.humanize',
-    # User authentication with social account support
-    'allauth',
-    # User authentication with email support
-    'allauth.account',
-    # Social account support for user authentication
-    # 'allauth.socialaccount',
-    # Third-party "clodinary_strg app. it should come before ststicfiles
-    'cloudinary_storage',
+    'django.contrib.humanize',  # Humanization utilities for better readability
+    'allauth',  # User authentication with social account support
+    'allauth.account',  # User authentication with email support
+    'cloudinary_storage',  # Third-party "cloudinary_storage" app
     'django.contrib.staticfiles',
-    "crispy_forms",
-    "crispy_bootstrap5",
+    'crispy_forms',
+    'crispy_bootstrap5',
     'cloudinary',
-    # Project apps
     'client',
     'lead_master',
     'task_manager',
@@ -82,7 +73,6 @@ LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,39 +114,18 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 WSGI_APPLICATION = 'dealdesk-crm.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# if development:  # Check if in development mode
-#     # If in development mode, use SQLite as the database
-#     print("loading local db")
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
-#     # If in production mode, use the provided DATABASE_URL environment variable
-#     print("loading postgres db")
-#     DATABASES = {
-#         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-#         }
-
 DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-        }
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -172,18 +141,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 # Base URL for serving media files
@@ -192,22 +154,16 @@ MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 # Base URL for serving static files
 STATIC_URL = '/static/'
 # Storage engine for static files
-STATICFILES_STORAGE = (
-    'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-)
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 # Additional directories to find static files
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # Location for collected static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
 # Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom account adapter to disable account signup
