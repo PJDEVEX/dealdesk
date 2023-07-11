@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     'lead_master',
     'task_manager',
     'team',
-    'dashboard'
+    'dashboard',
+    'landing',
 ]
 
 # Assign the site ID to 1 as per Django convention in the settings file.
