@@ -1,4 +1,4 @@
-<div class="sidebar col-md-3 col-lg-2 p-0 bg-body-tertiary position-fixed">
+<div class="sidebar col-md-3 col-lg-2 p-0 bg-body-tertiary position-fixed d-none d-lg-block">
   <div class="offcanvas-lg offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
     aria-labelledby="sidebarMenuLabel">
     <div class="offcanvas-header">
@@ -6,35 +6,29 @@
     </div>
     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto vh-100">
       <ul class="nav flex-column">
-        <li class="nav-item mb-2">
-          <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{% url 'dashboard:dashboard' %}">
+        <li class="nav-item mb-2 {% if request.resolver_match.url_name == 'dashboard:dashboard' %}active{% endif %}">
+          <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="{% url 'dashboard:dashboard' %}">
             <i class="fa-solid fa-gauge-high"></i>
             Dashboard
           </a>
         </li>
         <!-- Add the "navbar-light" class to the nav-link elements in light mode -->
-        <li class="nav-item mb-2">
+        <li class="nav-item mb-2 {% if request.resolver_match.url_name == 'task_manager:task_list' %}active{% endif %}">
           <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="{% url 'task_manager:task_list' %}">
             <i class="fa-solid fa-clipboard-check"></i>
             Task Manager
           </a>
         </li>
-        <li class="nav-item mb-2">
+        <li class="nav-item mb-2 {% if request.resolver_match.url_name == 'lead_master:lead_list' %}active{% endif %}">
           <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="{% url 'lead_master:lead_list' %}">
             <i class="fa-solid fa-filter-circle-dollar"></i>
             Projects
           </a>
         </li>
-        <li class="nav-item mb-2">
+        <li class="nav-item mb-2{% if request.resolver_match.url_name == 'client:client_list' %}active{% endif %}">
           <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="{% url 'client:client_list' %}">
             <i class="fa-solid fa-users"></i>
             Clients
-          </a>
-        </li>
-        <li class="nav-item mb-2">
-          <a class="nav-link d-flex align-items-center gap-2 navbar-light" href="#">
-            <i class="fa-solid fa-book-open"></i>
-            Slog
           </a>
         </li>
       </ul>

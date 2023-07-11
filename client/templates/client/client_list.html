@@ -6,118 +6,121 @@
   <div class="row">
     <div class="col-12">
       <!-- Heading Container -->
-      <div class="container position-fixed top-0 start-0">
-        <div class="row">
-          <div class="col-12">
-            <h3 class="bg-body">Client List</h3>
-          </div>
-        </div>
-      </div>
-
-      <!-- Filter Form Container -->
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="p-2">
-              {{ filter_form.client_type|as_crispy_field }}
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="p-2">
-              {{ filter_form.salesman|as_crispy_field }}
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="p-2">
-              {{ filter_form.search_keyword|as_crispy_field }}
+      <div class="container mt-2">
+        <div class="'container ms-2">
+          <div class="row">
+            <div class="col-12">
+              <h3 class="bg-body">Client List</h3>
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-secondary ms-2">Apply</button>
       </div>
 
-      <!-- View add client button -->
-      <div class="d-flex justify-content-end">
-        <a href="{% url 'client:client_new' %}"
-          class="btn btn-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-          data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a client">
-          Add
-        </a>
-      </div>
+      <div class="container">
+        <!-- Filter Form Container -->
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="p-2">
+                {{ filter_form.client_type|as_crispy_field }}
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="p-2">
+                {{ filter_form.salesman|as_crispy_field }}
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="p-2">
+                {{ filter_form.search_keyword|as_crispy_field }}
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-secondary ms-2">Apply</button>
+          <!-- View add client button -->
+          <div class="d-flex justify-content-end">
+            <a href="{% url 'client:client_new' %}"
+              class="btn btn-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a client">
+              Add
+            </a>
+          </div>
+        </div>
 
-      <!-- Client List Container -->
-      <div class="container mt-5">
-        <table class="table bg-body-tertiary table-hover">
-          <!-- Table Headers -->
-          <thead>
-            <tr>
-              <th>Company Name</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Client Type</th>
-              <th>City</th>
-              <th>Country</th>
-              <th>Salesman</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for client in clients %}
-            <tr>
-              <td>{{ client.company_name }}</td>
-              <td>{{ client.first_name }}</td>
-              <td>{{ client.last_name }}</td>
-              <td>{{ client.get_client_type_display }}</td>
-              <td>{{ client.city }}</td>
-              <td>{{ client.country }}</td>
-              <td>{{ client.salesman }}</td>
-              <td>
-                <!-- View client details button -->
-                <button type="button" onclick="location.href='{% url 'client:client_detail' pk=client.pk %}'"
-                  class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom" title="View client details">
-                  Details
-                </button>
-              </td>
-              <td>
-                <!-- View client edit button -->
-                <button type="button" onclick="location.href='{% url 'client:client_edit' pk=client.pk %}'"
-                  class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update client details">
-                  Edit
-                </button>
-              </td>
-            </tr>
-            {% empty %}
-            <tr>
-              <td colspan="7">No clients found.</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+        <!-- Client List Container -->
+        <div class="container mt-5 overflow-x-scroll">
+          <table class="table bg-body-tertiary table-hover">
+            <!-- Table Headers -->
+            <thead>
+              <tr>
+                <th>Company Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Client Type</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Salesman</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for client in clients %}
+              <tr>
+                <td>{{ client.company_name }}</td>
+                <td>{{ client.first_name }}</td>
+                <td>{{ client.last_name }}</td>
+                <td>{{ client.get_client_type_display }}</td>
+                <td>{{ client.city }}</td>
+                <td>{{ client.country }}</td>
+                <td>{{ client.salesman }}</td>
+                <td>
+                  <!-- View client details button -->
+                  <button type="button" onclick="location.href='{% url 'client:client_detail' pk=client.pk %}'"
+                    class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom" title="View client details">
+                    Details
+                  </button>
+                </td>
+                <td>
+                  <!-- View client edit button -->
+                  <button type="button" onclick="location.href='{% url 'client:client_edit' pk=client.pk %}'"
+                    class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update client details">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="7">No clients found.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <!-- Pagination -->
+          {% if is_paginated %}
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              {% if page_obj.has_previous %}
+              <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+              </li>
+              {% endif %}
+              {% for num in page_obj.paginator.page_range %}
+              {% if page_obj.number == num %}
+              <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+              {% else %}
+              <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+              {% endif %}
+              {% endfor %}
+              {% if page_obj.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+          {% endif %}
+        </div>
       </div>
-
-      <!-- Pagination -->
-      {% if is_paginated %}
-      <nav aria-label="Page navigation">
-        <ul class="pagination">
-          {% if page_obj.has_previous %}
-          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
-          {% endif %}
-          {% for num in page_obj.paginator.page_range %}
-          {% if page_obj.number == num %}
-          <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
-          {% else %}
-          <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
-          {% endif %}
-          {% endfor %}
-          {% if page_obj.has_next %}
-          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
-          {% endif %}
-        </ul>
-      </nav>
-      {% endif %}
     </div>
   </div>
 </div>

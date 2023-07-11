@@ -50,7 +50,8 @@
 <body>
     <header class="navbar sticky-top flex-md-nowrap p-0 shadow fixed-top">
         <!-- branding -->
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 rounded-bottom-5" href="#">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 rounded-bottom-5"
+            href="{% url 'dashboard:dashboard' %}">
             <div class="card" style="width: 8rem;">
                 <img src="https://res.cloudinary.com/pjdevex/image/upload/v1687544628/static/dealdesk_crm_logo/dd_hr_light_rnrq97.webp"
                     alt="DealDesk | CRM" class="card-img-top rounded">
@@ -60,15 +61,60 @@
 
 
         <!-- Toggle navbar -->
-        <ul class="navbar-nav flex-row d-md-none">
-            <li class="nav-item text-nowrap">
-                <button class="nav-link px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu"
-                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+        <div class="container">
+            <div class="row">
 
-            </li>
-        </ul>
+                <!-- test toggle nav -->
+                <nav class="navbar bg-body-tertiary fixed-top d-lg-none">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" style="width: 8rem;" href="{% url 'dashboard:dashboard' %}"><img
+                                src="https://res.cloudinary.com/pjdevex/image/upload/v1687544628/static/dealdesk_crm_logo/dd_hr_light_rnrq97.webp"
+                                alt="DealDesk | CRM" class="card-img-top rounded"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                            aria-labelledby="offcanvasNavbarLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">DealDesk | CRM</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                    <li
+                                        class="nav-item {% if request.resolver_match.url_name == 'dashboard:dashboard' %}active{% endif %}">
+                                        <a class="nav-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
+                                    </li>
+                                    <li
+                                        class="nav-item {% if request.resolver_match.url_name == 'task_manager:task_list' %}active{% endif %}">
+                                        <a class="nav-link" href="{% url 'task_manager:task_list' %}">Task Manager</a>
+                                    </li>
+                                    <li
+                                        class="nav-item {% if request.resolver_match.url_name == 'lead_master:lead_list' %}active{% endif %}">
+                                        <a class="nav-link" href="{% url 'lead_master:lead_list' %}">Projects</a>
+                                    </li>
+                                    <li
+                                        class="nav-item {% if request.resolver_match.url_name == 'client:client_list' %}active{% endif %}">
+                                        <a class="nav-link" href="{% url 'client:client_list' %}">Clients</a>
+                                    </li>
+                                </ul>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+
+
+            </div>
+        </div>
     </header>
 
 
@@ -77,7 +123,7 @@
             <!-- side navbar -->
             {% include 'includes/navbar.html' %}
             <!-- Main body -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-12 col-lg-10 offset-lg-2 px-md-4">
                 {% block content %}
 
                 {% endblock %}
@@ -96,7 +142,7 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
 
-  
+
     <script src="{% static 'script/color-mode.js' %}"></script>
 
 
