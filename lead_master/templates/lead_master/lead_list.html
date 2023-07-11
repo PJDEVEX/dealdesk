@@ -37,60 +37,65 @@
             </div>
 
             <!-- Lead List -->
-            <table class="table bg-body-tertiary table-hover">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Client</th>
-                        <th>Salesman</th>
-                        <th>Brand</th>
-                        <th>Construction Type</th>
-                        <th>Category</th>
-                        <th>Project Status</th>
-                        <th>Est Closing Date</th>
-                        <th>Winning Chance (%)</th>
-                        <th>Forecast PxP ($)</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for lead in leads %}
-                    <tr>
-                        <td>{{ lead.name }}</td>
-                        <td>{{ lead.client }}</td>
-                        <td>{{ lead.salesman }}</td>
-                        <td>{{ lead.brand }}</td>
-                        <td>{{ lead.get_type_of_construction_display }}</td>
-                        <td>{{ lead.category }}</td>
-                        <td>{{ lead.get_lead_status_display }}</td>
-                        <td>{{ lead.est_closing_date }}</td>
-                        <td>{{ lead.get_winning_chance_display }}</td>
-                        <td>{{ lead.forecast_pxp|intcomma }}</td>
-                        <td>
+            <div class="container mt-5">
+                <div class="container table-responsive overflow-x-scroll">
+                    <table class="table bg-body-tertiary table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Client</th>
+                                <th>Salesman</th>
+                                <th>Brand</th>
+                                <th>Construction Type</th>
+                                <th>Category</th>
+                                <th>Project Status</th>
+                                <th>Est Closing Date</th>
+                                <th>Winning Chance (%)</th>
+                                <th>Forecast PxP ($)</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lead in leads %}
+                            <tr>
+                                <td>{{ lead.name }}</td>
+                                <td>{{ lead.client }}</td>
+                                <td>{{ lead.salesman }}</td>
+                                <td>{{ lead.brand }}</td>
+                                <td>{{ lead.get_type_of_construction_display }}</td>
+                                <td>{{ lead.category }}</td>
+                                <td>{{ lead.get_lead_status_display }}</td>
+                                <td>{{ lead.est_closing_date }}</td>
+                                <td>{{ lead.get_winning_chance_display }}</td>
+                                <td>{{ lead.forecast_pxp|intcomma }}</td>
+                                <td>
 
-                            <!-- Lead details button -->
-                            <button type="button"
-                                onclick="location.href='{% url 'lead_master:lead_detail' pk=lead.pk %}'"
-                                class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                                Details
-                            </button>
-                        </td>
-                        <td>
-                            <!-- Lead edit button -->
-                            <button type="button" onclick="location.href='{% url 'lead_master:lead_edit' pk=lead.pk %}'"
-                                class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                                Edit
-                            </button>
-                        </td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="5">No leads found.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                                    <!-- Lead details button -->
+                                    <button type="button"
+                                        onclick="location.href='{% url 'lead_master:lead_detail' pk=lead.pk %}'"
+                                        class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                        Details
+                                    </button>
+                                </td>
+                                <td>
+                                    <!-- Lead edit button -->
+                                    <button type="button"
+                                        onclick="location.href='{% url 'lead_master:lead_edit' pk=lead.pk %}'"
+                                        class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5">No leads found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
             <!-- Pagination -->
             {% if is_paginated %}
