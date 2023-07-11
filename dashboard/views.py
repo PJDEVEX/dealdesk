@@ -8,7 +8,7 @@ from django.db.models import Sum
 
 
 class DashboardView(TemplateView):
-    template_name = 'dashboard/index.html'
+    template_name = 'dashboard/dashboard.html'
 
     def get_context_data(self, **kwargs):
         # Create a context dictionary to pass data to the template
@@ -65,4 +65,3 @@ class DashboardView(TemplateView):
         context['sales_forecast_values'] = sales_forecast_values
 
         return context
-

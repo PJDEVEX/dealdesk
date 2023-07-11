@@ -15,6 +15,8 @@ app_name = 'client'
 # task_manager/urls.py
 app_name = 'task_manager'
 
+# dashboard/urls.py
+app_name = 'dashboard'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
