@@ -1,94 +1,110 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Client Details: {{ client.company_name }}</h3>
-<table class="table">
-  <tbody>
-    <tr>
-      <th>Company Name:</th>
-      <td>{{ client.company_name }}</td>
-    </tr>
-    <tr>
-      <th>First Name:</th>
-      <td>{{ client.first_name }}</td>
-    </tr>
-    <tr>
-      <th>Last Name:</th>
-      <td>{{ client.last_name }}</td>
-    </tr>
-    <tr>
-      <th>Client Type:</th>
-      <td>{{ client.get_client_type_display }}</td>
-    </tr>
-    <tr>
-      <th>Address Line 1:</th>
-      <td>{{ client.address1 }}</td>
-    </tr>
-    <tr>
-      <th>Address Line 2:</th>
-      <td>{{ client.address2 }}</td>
-    </tr>
-    <tr>
-      <th>Postal Code:</th>
-      <td>{{ client.postal_code }}</td>
-    </tr>
-    <tr>
-      <th>City:</th>
-      <td>{{ client.city }}</td>
-    </tr>
-    <tr>
-      <th>Country:</th>
-      <td>{{ client.country }}</td>
-    </tr>
-    <tr>
-      <th>Telephone:</th>
-      <td>{{ client.telephone }}</td>
-    </tr>
-    <tr>
-      <th>Mobile:</th>
-      <td>{{ client.mobile }}</td>
-    </tr>
-    <tr>
-      <th>Email:</th>
-      <td>{{ client.email }}</td>
-    </tr>
-    <tr>
-      <th>Salesman:</th>
-      <td>{{ client.salesman }}</td>
-    </tr>
-    <tr>
-      <th>Manager:</th>
-      <td>{{ client.manager }}</td>
-    </tr>
-    <tr>
-      <th>Created On:</th>
-      <td>{{ client.created_on }}</td>
-    </tr>
-    <tr>
-      <th>Updated On:</th>
-      <td>{{ client.updated_on }}</td>
-    </tr>
-  </tbody>
-</table>
-<!-- View client edit button -->
-<button type="button" onclick="location.href='{% url 'client:client_edit' client.pk %}'"
-  class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update client details">
-  Edit
-</button>
+<div class="col-lg-12">
+  <div class="row">
+    <div class="col-12">
+      <!-- Heading Container -->
+      <div class="container mt-5">
+        <div class="container ms-2">
+          <div class="row">
+            <div class="col-12">
+              <h3>Client Details: {{ client.company_name }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!-- Delete Button -->
-<button class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-  data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Company Name:</th>
+            <td>{{ client.company_name }}</td>
+          </tr>
+          <tr>
+            <th>First Name:</th>
+            <td>{{ client.first_name }}</td>
+          </tr>
+          <tr>
+            <th>Last Name:</th>
+            <td>{{ client.last_name }}</td>
+          </tr>
+          <tr>
+            <th>Client Type:</th>
+            <td>{{ client.get_client_type_display }}</td>
+          </tr>
+          <tr>
+            <th>Address Line 1:</th>
+            <td>{{ client.address1 }}</td>
+          </tr>
+          <tr>
+            <th>Address Line 2:</th>
+            <td>{{ client.address2 }}</td>
+          </tr>
+          <tr>
+            <th>Postal Code:</th>
+            <td>{{ client.postal_code }}</td>
+          </tr>
+          <tr>
+            <th>City:</th>
+            <td>{{ client.city }}</td>
+          </tr>
+          <tr>
+            <th>Country:</th>
+            <td>{{ client.country }}</td>
+          </tr>
+          <tr>
+            <th>Telephone:</th>
+            <td>{{ client.telephone }}</td>
+          </tr>
+          <tr>
+            <th>Mobile:</th>
+            <td>{{ client.mobile }}</td>
+          </tr>
+          <tr>
+            <th>Email:</th>
+            <td>{{ client.email }}</td>
+          </tr>
+          <tr>
+            <th>Salesman:</th>
+            <td>{{ client.salesman }}</td>
+          </tr>
+          <tr>
+            <th>Manager:</th>
+            <td>{{ client.manager }}</td>
+          </tr>
+          <tr>
+            <th>Created On:</th>
+            <td>{{ client.created_on }}</td>
+          </tr>
+          <tr>
+            <th>Updated On:</th>
+            <td>{{ client.updated_on }}</td>
+          </tr>
+        </tbody>
+      </table>
 
-<!-- Back to client list button -->
-<button type="button" onclick="location.href='{% url 'client:client_list' %}'"
-  class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Back to client List">
-  Back to Client List
-</button>
+      <!-- View client edit button -->
+      <button type="button" onclick="location.href='{% url 'client:client_edit' client.pk %}'"
+        class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update client details">
+        Edit
+      </button>
 
-<!-- Client Delete Confirmation Modal -->
-{% include 'client/confirm_delete_modal.html' %}
+      <!-- Delete Button -->
+      <button class="btn btn-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+        data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>
 
+      <!-- Back to client list button -->
+      <button type="button" onclick="location.href='{% url 'client:client_list' %}'"
+        class="btn btn-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+        Back to Client List
+      </button>
+
+      <!-- Client Delete Confirmation Modal -->
+      {% include 'client/confirm_delete_modal.html' %}
+
+    </div>
+  </div>
+</div>
 {% endblock %}
