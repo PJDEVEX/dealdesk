@@ -69,7 +69,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 # Account settings for authentication and redirection
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = False
