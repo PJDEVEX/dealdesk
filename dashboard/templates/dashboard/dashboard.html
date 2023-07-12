@@ -16,8 +16,8 @@
               <div class="row">
                 <div class="col-lg-2 col-md-4 col-sm-6">
                   <div class="mb-4">
-                    <div class="card h-100 z-n1">
-                      <div class="card-body bg-primary bg-opacity-25 border-0 rounded">
+                    <div class="card h-100 z-n1 border-0 rounded shadow">
+                      <div class="card-body bg-primary bg-opacity-25 rounded">
                         <!-- Card 1 -->
                         <h5 class="card-title">Total Leads</h5>
                         <p class="card-text fs-3 fw-semibold text-center">{{ leads_count }}</p>
@@ -27,8 +27,8 @@
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                   <div class="mb-4">
-                    <div class="card h-100 z-n1">
-                      <div class="card-body bg-primary bg-opacity-25 border-0 rounded">
+                    <div class="card h-100 z-n1 border-0 rounded shadow">
+                      <div class="card-body bg-primary bg-opacity-25 rounded">
                         <!-- Card 2 -->
                         <h5 class="card-title">Value per Lead $</h5>
                         <p class="card-text fs-3 fw-semibold text-center">{{ average_potential_value|intcomma }}</p>
@@ -38,8 +38,8 @@
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                   <div class="mb-4">
-                    <div class="card h-100 z-n1">
-                      <div class="card-body bg-primary bg-opacity-25 border-0 rounded">
+                    <div class="card h-100 z-n1 border-0 rounded shadow">
+                      <div class="card-body bg-primary bg-opacity-25 rounded">
                         <!-- Card 3 -->
                         <h5 class="card-title">TTL Forecast $</h5>
                         <p class="card-text fs-3 fw-semibold text-center">{{ total_forecasted_potential_value|intcomma }}</p>
@@ -49,8 +49,8 @@
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                   <div class="mb-4">
-                    <div class="card h-100 z-n1">
-                      <div class="card-body bg-primary bg-opacity-25 border-0 rounded">
+                    <div class="card h-100 z-n1 border-0 rounded shadow">
+                      <div class="card-body bg-primary bg-opacity-25 rounded">
                         <!-- Card 4 -->
                         <h5 class="card-title">Top Salesperson</h5>
                         <p class="card-text fs-3 fw-semibold text-center">{{ top_salesperson }}</p>
@@ -60,8 +60,8 @@
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                   <div class="mb-4">
-                    <div class="card h-100 z-n1">
-                      <div class="card-body bg-primary bg-opacity-25 border-0 rounded">
+                    <div class="card h-100 z-n1 border-0 rounded shadow">
+                      <div class="card-body bg-primary bg-opacity-25 rounded">
                         <!-- Card 5 -->
                         <h5 class="card-title">Top Category</h5>
                         <p class="card-text fs-3 fw-semibold text-center">{{ category_with_most_leads }}</p>
@@ -71,8 +71,8 @@
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                   <div class="mb-4">
-                    <div class="card h-100 z-n1">
-                      <div class="card-body bg-primary bg-opacity-25 border-0 rounded">
+                    <div class="card h-100 z-n1 border-0 rounded shadow">
+                      <div class="card-body bg-primary bg-opacity-25 rounded">
                         <!-- Card 6 -->
                         <h5 class="card-title">Leads Won</h5>
                         <p class="card-text fs-3 fw-semibold text-center">{{ leads_won_count }}</p>
@@ -94,7 +94,7 @@
             <!-- <h1>Container 2</h1> -->
             <div class="row">
               <div class="col-lg-6 col-md-6">
-                <div class="card mb-4">
+                <div class="card mb-4 border-0 rounded shadow-lg">
                   <div class="card-body">
                     <h5 class="card-title">Sales Funnel</h5>
                     <canvas id="lead_winning_chance_chart" width="400" height="300"></canvas>
@@ -170,7 +170,7 @@
               </div>
 
               <div class="col-lg-6 col-md-6">
-                <div class="card mb-4">
+                <div class="card mb-4 border-0 rounded shadow-lg">
                   <div class="card-body">
                     <h5 class="card-title">Sales Forecast ($)</h5>
                     <canvas id="lead_forecast_pxp_chart" width="400" height="300"></canvas>
