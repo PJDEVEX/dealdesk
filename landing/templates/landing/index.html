@@ -1,21 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="container-fluid landing-container">
-    <div class="row">
-      <div class="col-md-12 landing-image-container vw-100 vh-100 position-relative">
-        <!-- landing page background -->
-        <img class="img-fluid" src="https://res.cloudinary.com/pjdevex/image/upload/v1689120365/static/dealdesk-crm/background/ind_img_n55c75.webp" alt="Background Image" style="object-fit: cover; width: 100%; height: 100%;">
-        
-        <!-- Mask & logo -->
-        <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.4);"></div>
-        
-        <img class="img-fluid position-absolute top-50 start-50 translate-middle rounded" src="https://res.cloudinary.com/pjdevex/image/upload/v1689184170/static/dealdesk_crm_logo/dd_sq_dark_vt0sqk.webp" alt="Logo" style="width: 35%; z-index: 10;">
+<div class="container-fluid landing-container">
+  <div class="row">
+    <div class="col-md-12 landing-image-container vw-100 vh-100 position-relative">
+      <!-- landing page background -->
+      <img class="img-fluid"
+        src="https://res.cloudinary.com/pjdevex/image/upload/v1689120365/static/dealdesk-crm/background/ind_img_n55c75.webp"
+        alt="Background Image" style="object-fit: cover; width: 100%; height: 100%;">
 
-        <!-- Responsive classes for adjusting logo size -->
-        <div class="d-none d-md-block" style="width: 15%;"></div>
-        <div class="d-md-none" style="width: 25%;"></div>
-      </div>
+      <!-- Mask & logo -->
+      <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.4);"></div>
+
+      {% if user.is_authenticated %}
+      <a href="{% url 'dashboard:dashboard' %}">
+        <img class="img-fluid position-absolute top-50 start-50 translate-middle rounded"
+          src="https://res.cloudinary.com/pjdevex/image/upload/v1689184170/static/dealdesk_crm_logo/dd_sq_dark_vt0sqk.webp"
+          alt="Logo" style="width: 35%; z-index: 10;">
+      </a>
+      {% else %}
+      <img class="img-fluid position-absolute top-50 start-50 translate-middle rounded"
+        src="https://res.cloudinary.com/pjdevex/image/upload/v1689184170/static/dealdesk_crm_logo/dd_sq_dark_vt0sqk.webp"
+        alt="Logo" style="width: 35%; z-index: 10;">
+      {% endif %}
+
+      <!-- Responsive classes for adjusting logo size -->
+      <div class="d-none d-md-block" style="width: 15%;"></div>
+      <div class="d-md-none" style="width: 25%;"></div>
     </div>
   </div>
+</div>
 {% endblock %}
