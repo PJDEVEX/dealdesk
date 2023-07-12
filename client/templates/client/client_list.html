@@ -17,34 +17,36 @@
       </div>
       <div class="container">
         <!-- Filter Form Container -->
-        <div class="container mt-5">
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="p-2">
-                {{ filter_form.client_type|as_crispy_field }}
+        <form method="get" action="{% url 'client:client_list' %}">
+          <div class="container mt-5">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="p-2">
+                  {{ filter_form.client_type|as_crispy_field }}
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="p-2">
+                  {{ filter_form.salesman|as_crispy_field }}
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="p-2">
+                  {{ filter_form.search_keyword|as_crispy_field }}
+                </div>
               </div>
             </div>
-            <div class="col-sm-4">
-              <div class="p-2">
-                {{ filter_form.salesman|as_crispy_field }}
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="p-2">
-                {{ filter_form.search_keyword|as_crispy_field }}
-              </div>
+            <button type="submit" class="btn btn-secondary ms-2">Apply</button>
+            <!-- View add client button -->
+            <div class="d-flex justify-content-end">
+              <a href="{% url 'client:client_new' %}"
+                class="btn btn-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a client">
+                Add
+              </a>
             </div>
           </div>
-          <button type="submit" class="btn btn-secondary ms-2">Apply</button>
-          <!-- View add client button -->
-          <div class="d-flex justify-content-end">
-            <a href="{% url 'client:client_new' %}"
-              class="btn btn-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a client">
-              Add
-            </a>
-          </div>
-        </div>
+        </form>
         <!-- Client List Container -->
         <div class="container mt-5">
           <div class="container table-responsive overflow-x-scroll">

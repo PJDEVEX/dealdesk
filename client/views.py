@@ -20,7 +20,7 @@ class ClientListView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        # Initial queryset of clients
+    # Initial queryset of clients
         queryset = super().get_queryset()
         # Get filter parameters
         client_type = self.request.GET.get('client_type')
@@ -32,7 +32,7 @@ class ClientListView(ListView):
             queryset = queryset.filter(client_type=client_type)
 
         if salesman:
-            queryset = queryset.filter(salesman=salesman)
+            queryset = queryset.filter(salesman_id=salesman)
 
         if search_keyword:
             queryset = queryset.filter(
@@ -79,7 +79,7 @@ class ClientCreateView(CreateView):
     def form_invalid(self, form):
         # Override form_invalid to add styling to invalid fields
         for field in form.errors:
-            form[field].field.widget.attrs['class'] += 'is-invalid'
+            form[field].field.widget.attrs['class'] += ' is-invalid'
         return self.render_to_response(self.get_context_data(form=form))
 
     def form_valid(self, form):
@@ -95,7 +95,7 @@ class ClientUpdateView(UpdateView):
     def get_success_url(self):
         # Get the updated client instance
         client = self.get_object()
-        # Return the URL for the client_detail view with the client's id 
+        # Return the URL for the client_detail view with the client's id
         # as a parameter
         return reverse('client:client_detail', kwargs={'pk': client.pk})
 

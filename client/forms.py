@@ -1,5 +1,6 @@
 from django import forms
 from .models import Client, CLIENT_TYPE_CHOICES
+from team.models import Sar
 
 
 class ClientFilterForm(forms.Form):
@@ -11,10 +12,12 @@ class ClientFilterForm(forms.Form):
         widget=forms.Select(attrs={'class': 'form-control'}),
         required=False
     )
-    salesman = forms.CharField(
+    salesman = forms.ModelChoiceField(
+        queryset=Sar.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control'}),
         required=False
-    )
+        )
+    
     search_keyword = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         required=False
