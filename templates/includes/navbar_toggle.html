@@ -18,10 +18,10 @@
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              {% if user.is_authenticated %}
               <li class="nav-item {% if request.resolver_match.url_name == 'dashboard:dashboard' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
               </li>
-              {% if user.is_authenticated %}
               <li
                 class="nav-item {% if request.resolver_match.url_name == 'task_manager:task_list' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'task_manager:task_list' %}">Task Manager</a>
