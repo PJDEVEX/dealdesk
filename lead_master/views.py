@@ -42,7 +42,8 @@ class LeadListView(ListView):
             if salesman:
                 queryset = queryset.filter(salesman=salesman)
             if type_of_construction:
-                queryset = queryset.filter(type_of_construction=type_of_construction)
+                queryset = queryset.filter(
+                    type_of_construction=type_of_construction)
             if lead_status:
                 queryset = queryset.filter(lead_status=lead_status)
             if winning_chance:

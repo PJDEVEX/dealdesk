@@ -162,7 +162,7 @@ class LeadMaster(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Save the lead_master instance.       
+        Save the lead_master instance.
         """
         self.forecast_pxp = self.potential_value * self.winning_chance
         super().save(*args, **kwargs)
