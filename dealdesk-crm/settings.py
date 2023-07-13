@@ -31,12 +31,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # Set DEBUG mode based on the 'DEVELOPMENT' environment variable
 development = os.environ.get('DEVELOPMENT', False)
-DEBUG = True
+DEBUG = development
 
 # List of allowed hosts for the Django application
 ALLOWED_HOSTS = [
     'dealdesk-crm.herokuapp.com',
-    'localhost',
     '8000-pjdevex-dealdesk-x2u1gsmdgdp.ws-eu101.gitpod.io',
     '127.0.0.1',
 ]
@@ -122,9 +121,20 @@ AUTHENTICATION_BACKENDS = (
 WSGI_APPLICATION = 'dealdesk-crm.wsgi.application'
 
 # Database
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+if development:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    import dj_database_url
+
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
