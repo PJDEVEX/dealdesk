@@ -3,8 +3,7 @@
     <nav class="navbar bg-body-tertiary fixed-top d-lg-none">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'landing:index' %}">
-          <img
-            src="https://res.cloudinary.com/pjdevex/image/upload/v1689184170/static/dealdesk_crm_logo/dd_hr_light_qo3739.webp"
+          <img src="https://res.cloudinary.com/pjdevex/image/upload/v1689184170/static/dealdesk_crm_logo/dd_hr_light_qo3739.webp"
             alt="DealDesk | CRM" class="card-img-top rounded" style="width: 8rem;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -20,30 +19,30 @@
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               {% if user.is_authenticated %}
               <li class="nav-item {% if request.resolver_match.url_name == 'dashboard:dashboard' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
+                <a class="nav-link fs-5 fs-md-4" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
               </li>
               <li
                 class="nav-item {% if request.resolver_match.url_name == 'task_manager:task_list' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'task_manager:task_list' %}">Task Manager</a>
+                <a class="nav-link fs-5 fs-md-4" href="{% url 'task_manager:task_list' %}">Task Manager</a>
               </li>
               <li class="nav-item {% if request.resolver_match.url_name == 'lead_master:lead_list' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'lead_master:lead_list' %}">Projects</a>
+                <a class="nav-link fs-5 fs-md-4" href="{% url 'lead_master:lead_list' %}">Projects</a>
               </li>
               <li class="nav-item {% if request.resolver_match.url_name == 'client:client_list' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'client:client_list' %}">Clients</a>
+                <a class="nav-link fs-5 fs-md-4" href="{% url 'client:client_list' %}">Clients</a>
               </li>
               {% endif %}
               {% if not user.is_authenticated %}
               <li class="nav-item {% if request.resolver_match.url_name == 'account_signup' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'account_signup' %}">Signup</a>
+                <a class="nav-link fs-5 fs-md-4" href="{% url 'account_signup' %}">Signup</a>
               </li>
               <li class="nav-item {% if request.resolver_match.url_name == 'account_login' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'account_login' %}">Signin</a>
+                <a class="nav-link fs-5 fs-md-4" href="{% url 'account_login' %}">Signin</a>
               </li>
               {% endif %}
               {% if user.is_authenticated %}
               <li class="nav-item {% if request.resolver_match.url_name == 'account_logout' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'account_logout' %}">Signout</a>
+                <a class="nav-link fs-5 fs-md-4" href="{% url 'account_logout' %}">Signout</a>
               </li>
               {% endif %}
             </ul>
