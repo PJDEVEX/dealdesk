@@ -13,7 +13,7 @@ class ManagerAdmin(admin.ModelAdmin):
         'email',
         'created_on',
         'updated_on',
-        )
+    )
 
 
 @admin.register(Sar)
@@ -28,8 +28,8 @@ class SarAdmin(admin.ModelAdmin):
         'manager',
         'created_on',
         'updated_on',
-        )
+    )
     # Let the user to filer the Sar by manager
     list_filter = (
         ('manager', admin.RelatedOnlyFieldListFilter),
-        )
+    )

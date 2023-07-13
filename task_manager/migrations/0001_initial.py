@@ -14,18 +14,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='TaskManager',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=55)),
-                ('description', models.CharField(max_length=255)),
-                ('due_date', models.DateField()),
-                ('status', models.CharField(choices=[('TBD', 'To Do'), ('D', 'Done')], default='To Do', max_length=50)),
-                ('priority', models.CharField(choices=[('N', 'Normal'), ('U', 'Urgent')], default='Normal', max_length=50)),
-                ('assigned_to', models.ForeignKey(on_delete=models.SET(task_manager.models.get_salesman), related_name='tasks', to='team.sar')),
-            ],
-            options={
-                'ordering': ['due_date'],
-            },
-        ),
-    ]
+            name='TaskManager', fields=[
+                ('id', models.BigAutoField(
+                    auto_created=True, primary_key=True, serialize=False, verbose_name='ID')), ('title', models.CharField(
+                        max_length=55)), ('description', models.CharField(
+                            max_length=255)), ('due_date', models.DateField()), ('status', models.CharField(
+                                choices=[
+                                    ('TBD', 'To Do'), ('D', 'Done')], default='To Do', max_length=50)), ('priority', models.CharField(
+                                        choices=[
+                                            ('N', 'Normal'), ('U', 'Urgent')], default='Normal', max_length=50)), ('assigned_to', models.ForeignKey(
+                                                on_delete=models.SET(
+                                                    task_manager.models.get_salesman), related_name='tasks', to='team.sar')), ], options={
+                'ordering': ['due_date'], }, ), ]

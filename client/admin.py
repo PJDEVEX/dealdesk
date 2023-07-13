@@ -13,7 +13,7 @@ class ClientAdmin(admin.ModelAdmin):
         'salesman',
         'created_on',
         'updated_on'
-        )
+    )
     # Define the list of fields to be used for filtering the change list view
     list_filter = (
         'client_type',
@@ -21,4 +21,4 @@ class ClientAdmin(admin.ModelAdmin):
         'country',
         'salesman',
         'manager'
-        )
+    )

@@ -15,9 +15,9 @@ class TaskManagerAdmin(admin.ModelAdmin):
         'status',
         'priority',
         'assigned_to',
-        )
+    )
     # Define the list of fields to be used for filtering the change list view
     list_filter = (
         'status',
         'priority',
-        )
+    )

@@ -15,13 +15,13 @@ class LeadMasterAdmin(admin.ModelAdmin):
         'category',
         'type_of_construction',
         'lead_status',
-        'est_closing_date',        
+        'est_closing_date',
         'est_date_of_delivery',
         'potential_value',
         'winning_chance',
         'forecast_pxp',
         'salesman',
-        )
+    )
     # Define the list of fields to be used for filtering the change list view
     list_filter = (
         'lead_status',
@@ -30,7 +30,7 @@ class LeadMasterAdmin(admin.ModelAdmin):
         'brand',
         'category',
         'salesman',
-        )
+    )
     # Search fields allow searching by lead_master name, location, brand, category,
     # salesman, or client company name.
     search_fields = [
@@ -41,7 +41,7 @@ class LeadMasterAdmin(admin.ModelAdmin):
         'salesman__first_name',
         'salesman__last_name',
         'client__company_name',
-        ]
+    ]
     # Add a helper text so that user finds it easy to search
     change_list_template = 'admin/lead_master/lead_master_change_list.html'
 
@@ -52,7 +52,7 @@ class BrandAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'brand',
-        )
+    )
 
 
 @admin.register(Category)
@@ -61,4 +61,4 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'category',
-        )
+    )
