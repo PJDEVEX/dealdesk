@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from lead_master.models import LeadMaster, WINNING_CHANCE
 from django.db import models
 from decimal import Decimal
@@ -7,6 +9,7 @@ from django.db.models.functions import TruncMonth
 from django.db.models import Sum
 
 
+@method_decorator(login_required, name='dispatch')
 class DashboardView(TemplateView):
     """
     Display the dashboard view with various statistics and charts.
