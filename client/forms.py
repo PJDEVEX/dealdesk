@@ -16,8 +16,8 @@ class ClientFilterForm(forms.Form):
         queryset=Sar.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control'}),
         required=False
-        )
-    
+    )
+
     search_keyword = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         required=False

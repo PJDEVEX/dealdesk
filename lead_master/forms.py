@@ -1,11 +1,9 @@
+"""
+Forms for the lead_master app.
+"""
 from django import forms
 from django.forms import DateInput
-from .models import (
-    LeadMaster,
-    TYPE_OF_CONSTRUCTION,
-    LEAD_STATUS,
-    WINNING_CHANCE
-    )
+from .models import LeadMaster, TYPE_OF_CONSTRUCTION, LEAD_STATUS, WINNING_CHANCE
 from client.models import Client
 from team.models import Sar, Manager
 from .models import Brand, Category
@@ -13,7 +11,7 @@ from .models import Brand, Category
 
 class LeadMasterFilterForm(forms.Form):
     """
-    Filter form for filtering lead masters
+    Filter form for filtering lead masters.
     """
     client = forms.ModelChoiceField(
         queryset=Client.objects.all(),
@@ -89,8 +87,8 @@ class LeadMasterForm(forms.ModelForm):
             'type_of_construction': forms.Select(attrs={'class': 'form-control', 'tabindex': '7'}),
             'category': forms.Select(attrs={'class': 'form-control', 'tabindex': '8'}),
             'lead_status': forms.Select(attrs={'class': 'form-control', 'tabindex': '9'}),
-            'est_closing_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date' , 'tabindex': '10'}),
-            'est_date_of_delivery': forms.DateInput(attrs={'class': 'form-control', 'type': 'date' , 'tabindex': '11'}),
+            'est_closing_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'tabindex': '10'}),
+            'est_date_of_delivery': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'tabindex': '11'}),
             'potential_value': forms.NumberInput(attrs={'class': 'form-control', 'tabindex': '12'}),
             'winning_chance': forms.Select(attrs={'class': 'form-control', 'tabindex': '13'}),
             'forecast_pxp': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Forecasted PXP', 'tabindex': '14'}),

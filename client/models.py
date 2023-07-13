@@ -15,15 +15,18 @@ def get_salesman():
 
 
 CLIENT_TYPE_CHOICES = [
-        ("ARC", "Architect"),
-        ("PLM", "Plumbing Contractor"),
-        ("DVP", "Developer"),
-        ("EPC", "EPC Contractor"),
-        ("CLN", "End-Client"),
-        ]
+    ("ARC", "Architect"),
+    ("PLM", "Plumbing Contractor"),
+    ("DVP", "Developer"),
+    ("EPC", "EPC Contractor"),
+    ("CLN", "End-Client"),
+]
 
 
 class Client(models.Model):
+    """
+    Represents a client in the system.
+    """
     company_name = models.CharField(max_length=255, null=False)
     first_name = models.CharField(max_length=55, null=False)
     last_name = models.CharField(max_length=55, null=False)
@@ -45,7 +48,8 @@ class Client(models.Model):
         Sar,
         on_delete=models.SET(get_salesman),
         # null=True,  # Set the foreign key field as nullable
-        # blank=False,  # Doesn't allow the foreign key field to be empty in forms,
+        # blank=False,  # Doesn't allow the foreign key field to be empty in
+        # forms,
         related_name='clients'
     )
     manager = models.ForeignKey(
@@ -57,6 +61,9 @@ class Client(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
+        """
+        Metadata options for the Client model.
+        """
         verbose_name = 'Client'
         verbose_name_plural = 'Clients'
         db_table = 'Client.Client'

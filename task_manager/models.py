@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
-from django.utils import timezone
 
 
-#  Get a default ID
 def get_salesman():
+    """
+    Get the default ID for the salesman.
+    """
     return 2
 
 
@@ -21,6 +21,9 @@ PRIORITY_CHOICES = [
 
 
 class TaskManager(models.Model):
+    """
+    Represents a task manager model.
+    """
     title = models.CharField(max_length=55, null=False)
     description = models.CharField(max_length=255)
     due_date = models.DateField(null=False)
@@ -43,6 +46,9 @@ class TaskManager(models.Model):
     )
 
     class Meta:
+        """
+        Meta options for the TaskManager model.
+        """
         ordering = ['due_date']
 
     def __str__(self):

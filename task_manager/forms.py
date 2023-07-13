@@ -6,7 +6,7 @@ from team.models import Sar
 
 class TaskManagerFilterForm(forms.Form):
     """
-    Filter form for filtering task managers
+    Filter form for filtering task managers.
     """
     assigned_to = forms.ModelChoiceField(
         queryset=Sar.objects.all(),
@@ -50,5 +50,8 @@ class TaskManagerForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the form and set the queryset for the 'assigned_to' field.
+        """
         super().__init__(*args, **kwargs)
         self.fields['assigned_to'].queryset = Sar.objects.all()

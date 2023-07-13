@@ -1,3 +1,6 @@
+"""
+Models for the lead_master app.
+"""
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -5,38 +8,52 @@ from django.utils import timezone
 from decimal import Decimal
 
 
-#  Get a default ID
 def get_manager():
+    """
+    Get the default manager ID.
+    """
     return 2
 
 
 def get_salesman():
+    """
+    Get the default salesman ID.
+    """
     return 2
 
 
 def get_client():
+    """
+    Get the default client ID.
+    """
     return 3
 
 
 def get_brand():
+    """
+    Get the default brand ID.
+    """
     return 2
 
 
 def get_category():
+    """
+    Get the default category ID.
+    """
     return 2
 
 
 LEAD_STATUS = [
-            ("Atv", "Active"),
-            ("O/h", "On hold"),
-            ("P.won", "Partially won"),
-            ("Won", "Won")
-        ]
+    ("Atv", "Active"),
+    ("O/h", "On hold"),
+    ("P.won", "Partially won"),
+    ("Won", "Won")
+]
 
 TYPE_OF_CONSTRUCTION = [
-            ("NC", "New Construction"),
-            ("RF", "Refurbishment")
-        ]
+    ("NC", "New Construction"),
+    ("RF", "Refurbishment")
+]
 
 WINNING_CHANCE = [
     (Decimal('0.00'), "0% - No Chance"),
@@ -45,7 +62,7 @@ WINNING_CHANCE = [
     (Decimal('0.75'), "75% - Highly Likely"),
     (Decimal('0.90'), "90% - WON PENDING PO"),
     (Decimal('1.00'), "100% - WON with PO"),
-    ]
+]
 
 
 class Brand(models.Model):
@@ -58,7 +75,7 @@ class Brand(models.Model):
 
     class Meta:
         ordering = ['brand']
-    
+
     def __str__(self):
         return self.brand
 
@@ -80,6 +97,9 @@ class Category(models.Model):
 
 
 class LeadMaster(models.Model):
+    """
+    Represents a lead master model.
+    """
     name = models.CharField(max_length=100, null=False)
     client = models.ForeignKey(
         'client.Client',
@@ -125,7 +145,8 @@ class LeadMaster(models.Model):
     potential_value = models.DecimalField(
         max_digits=10,
         decimal_places=0,
-        null=False)
+        null=False
+    )
     winning_chance = models.DecimalField(
         max_digits=3,
         decimal_places=2,
@@ -141,18 +162,7 @@ class LeadMaster(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Save the lead_master instance.
-
-        This method overrides the default save method to calculate
-        the forecasted potential value (forecast_pxp) based on the
-        potential value and winning chance before saving the instance.
-
-        Args:
-            *args: Variable length argument list.
-            **kwargs: Arbitrary keyword arguments.
-
-        Returns:
-            None
+        Save the lead_master instance.       
         """
         self.forecast_pxp = self.potential_value * self.winning_chance
         super().save(*args, **kwargs)
