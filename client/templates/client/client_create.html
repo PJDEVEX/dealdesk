@@ -9,7 +9,7 @@
 
       <!-- Create a new lead -->
       <div class="container mt-4">
-        <form class="form-floating" method="post" action="{% url 'lead_master:lead_new' %}">
+        <form class="form-floating" method="post" action="{% url 'client:client_new' %}">
           {% csrf_token %}
 
           <div class="row">
@@ -24,7 +24,7 @@
           <button type="submit" class="btn btn-primary">Save</button>
 
           <!-- Cancel button -->
-          <a href="{% url 'lead_master:lead_list' %}" class="btn btn-secondary">Cancel</a>
+          <a href="{% url 'client:client_list' %}" class="btn btn-secondary">Cancel</a>
         </form>
       </div>
     </div>
