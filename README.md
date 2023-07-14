@@ -16,94 +16,6 @@ Built on the Django Python framework, DealDesk|CRM boasts a modular design, scal
 
 visit [DealDesk|CRM](https://dealdesk-crm.herokuapp.com/)
 
-# **Table Of Contents**
-* [**DealDesk|CRM**](#DealDesk|CRM)
-* [**Planning Phase**](#planning-phase)
-  * [**Strategy**](#strategy)
-    * [**Site Aims:**](#site-aims)
-    * [**Opportunities:**](#opportunities)
-  * [**Scope**](#scope)
-  * [**Structure**](#structure)
-    * [**User Stories:**](#user-stories)
-    * [**User Stories dropped as part of the agile process**](#user-stories-dropped-as-part-of-the-agile-process)
-  * [**Skeleton**](#skeleton)
-    * [**Wireframes:**](#wireframes)
-    * [**Database Schema**](#database-schema)
-  * [**Surface**](#surface)
-    * [**Color scheme:**](#color-scheme)
-    * [**Typography:**](#typography)
-      * [***Condiment:***](#condiment)
-      * [***Lato:***](#lato)
-* [**Agile Development Process**](#agile-development-process)
-* [**Features**](#features)
-  * [**Site Navigation**](#site-navigation)
-    * [**Navbar**](#navbar)
-      * [***Logo:***](#logo)
-      * [***Signed Out:***](#signed-out)
-      * [***Signed In:***](#signed-in)
-      * [***Hamburger menu on smaller screen sizes:***](#hamburger-menu-on-smaller-screen-sizes)
-    * [**Hero Images:**](#hero-images)
-      * [***Job Openings/Landing Page:***](#job-openingslanding-page)
-      * [***Add Job Form Page:***](#add-job-form-page)
-    * [***Saved jobs page:***](#saved-jobs-page)
-    * [***Insights page:***](#insights-page)
-    * [***Edit note form page:***](#edit-note-form-page)
-  * [**AllAuth Pages**](#allauth-pages)
-    * [***Sign In:***](#sign-in)
-      * [***Form Errors:***](#form-errors)
-    * [***Sign Up:***](#sign-up)
-      * [***Form Errors:***](#form-errors-1)
-    * [***Sign Out:***](#sign-out)
-  * [**Site Instructions**](#site-instructions)
-    * [***Access to instructions page:***](#access-to-instructions-page)
-      * [***Nav link:***](#nav-link)
-      * [***On page Button:***](#on-page-button)
-      * [***Note form Anchor tag:***](#note-form-anchor-tag)
-  * [**Main Page Content**](#main-page-content)
-    * [***Job Openings page:***](#job-openings-page)
-      * [***Add Job Button:***](#add-job-button)
-      * [***Add Job Form:***](#add-job-form)
-      * [***Add Job Success message:***](#add-job-success-message)
-    * [***Job Openings and Pinned Board Content:***](#job-openings-and-pinned-board-content)
-      * [***Job Preview Card (logged out):***](#job-preview-card-logged-out)
-      * [***Job Preview Card (Logged in):***](#job-preview-card-logged-in)
-      * [***Job Preview Card Footer (Logged in as admin user):***](#job-preview-card-footer-logged-in-as-admin-user)
-    * [***Full Job Details Page***](#full-job-details-page)
-      * [***Full details card (unpinned):***](#full-details-card-unpinned)
-      * [***Full details card (pinned):***](#full-details-card-pinned)
-        * [**Full job card**](#full-job-card)
-      * [***Notes form:***](#notes-form)
-      * [***Notes Accordion:***](#notes-accordion)
-        * [**Note:**](#note)
-        * [**Insight:**](#insight)
-    * [***Insights PAge:***](#insights-page-1)
-      * [***Add Insight Button:***](#add-insight-button)
-      * [***Add Insight Form:***](#add-insight-form)
-      * [***Add Insight Form Errors:***](#add-insight-form-errors)
-        * [**Short description field error:**](#short-description-field-error)
-        * [**Short description field error:**](#short-description-field-error-1)
-      * [***Insight left success message:***](#insight-left-success-message)
-      * [***Insight Item Display:***](#insight-item-display)
-      * [***Timeline:***](#timeline)
-    * [***Contact Us Page:***](#contact-us-page)
-    * [***Pagination:***](#pagination)
-    * [***Footer:***](#footer)
-  * [**Error pages**](#error-pages)
-    * [***Members Only Page:***](#members-only-page)
-    * [***500 Server Error Page:***](#500-server-error-page)
-    * [***404 Page Not Found Error Page:***](#404-page-not-found-error-page)
-  * [**Warning Modals**](#warning-modals)
-    * [***Delete Note/Insight:***](#delete-noteinsight)
-    * [***Delete Job:***](#delete-job)
-    * [***Unpin Job:***](#unpin-job)
-    * [***Delete element from the DOM:***](#delete-element-from-the-dom)
-* [**Future development**](#future-development)
-* [**Testing Phase**](#testing-phase)
-* [**Deployment**](#deployment)
-* [**Technologies used**](#technologies-used)
-* [**Honorable mentions**](#honorable-mentions)
-* [**Credits**](#credits)
-
 # **Planning Phase**
 ## **Strategy** 
 
@@ -203,439 +115,230 @@ I have further divided this table into three categories to help prioritize the o
 
 These three categories are:-
 * UX efforts **must** address these:
-    * User can pin Jobs.
-    * Manually add jobs (approved only by admin).
-    * User-specific job notes.
-    * Personal insights.
-    * User login.
+    * Dashboard
+    * Dashboard - KPIs
+    * Client database
+    * Project database
+    * Lead management
+    * Sales Pipeline
+    * Task Management
+    * Restricted User log in
   
 * UX efforts **should** accommodate these:
-    * API to fetch jobs data
-    * Tips/resources.
-    * Progress tracker (Kanban board).
-    * User profiles
-    * Landing page with site overview.
-    * Job search.
+    * Team management
+    * Sales Training portal
+    * Email integration
+    * Integrate marketing activities
   
 * **Unwise** use of time to address there:
-    * Direct application to jobs.
-    * Jobs blog.
-    * Employer ratings.
-    * Number of users applied.
-    * Direct email to an employer with CV/cover letter attachments.
-    * Community mentorship.
-    * Freelance-specific jobs board.
+    * Customer service support
+    * Integrate a chatbot
+    * Internal messaging system
+    * Notification system
+    * API for news updates
+    * KAM analysis
   
 ## **Structure**   
-To help me visualize a typical user journey around the site, I used [draw.io](https://app.diagrams.net/) to help me plan out the various routes a user could take through the site. This flow changed slightly throughout development, specifically with the dropping of an API for the jobs data. However, in general, it guided the process.
-  
-![User Journeys flow chart](docs/flowcharts/user-Journey.jpg)
-  
+- User Authentication: The system requires users to authenticate using a username and password to access restricted areas of the site.
+- Dashboard: Upon login, users are presented with a dashboard view, providing an overview of key metrics and important information.
+- Client Management: Authorized users can perform Create, Read, Update, and Delete (CRUD) operations on client records, enabling effective management and communication.
+- Project/Lead Management: Users have the ability to manage projects and leads, including tracking progress.
+- Task Manager: The system includes a task management module that allows users to create, assign, and track tasks, ensuring efficient project execution.
+- Logout: When a user decides to leave the site, they can log out to ensure secure access and protect sensitive information.
+
 ### **User Stories:**  
   
-* As an **Admin** I can...
-    * **use a text editor within the admin panel** so that **I can create a job description in a way that is clear and appeals to the eye when creating a job post**    
-    * ...**Log into a user interface** so that **I can easily manage data via a user interface**
-    * ... **Filter and search all custom models from the admin page** so that **I can utilize the admin page to review, edit and delete data quickly.**
-    * ...**Easily navigate the admin panel** so that **I can view, search, add and delete jobs**
-    * ...**Approve new job posts offered by the community for the community** so that **I can ensure that posts are not malicious, false, misleading, or incomplete.**
-    * ...**Delete a Job post** so that **I can remove jobs that are no longer relevant or available.**
-    *  ...**Edit a job post without using the admin panel** to that **if I spot a mistake or update a job post, I can do so quickly and easily without issue.**
- 
-* As an **Unregistered User** I can... 
-    * ...**quickly determine the subject of the site** so that **from the landing page I can see if I want to continue spending my time on this site and register**
-    * ...**register for an account** so that **I can enjoy a personalized experience as a job seeker**
-    * ...**browse the available jobs (brief description only)** so that **I can see if I wish to register with the site or not**
-  
-* As a **Registered User** I can... 
-    * ...**Pin jobs to a board** so that **I can refer back to them later with minimal effort**
-    * ...**browse the full details of the available jobs** so that **I can see the full job spec and how to apply**  
-    * ...**leave notes specific to the job on my pinboard** so that **I can keep track of specific milestones in the application process**
-    * ...**turn a note into an insight** so that **it can be seen on a separate page showing learnings from the entire process of the job hunting process**
-    * ...**delete previous notes and insights** so that **I can delete notes or insights that are no longer relevant to me.**
-    * ...**see a timeline of insights** so that **I can track them over time**
-    * ...**Add my job posts** so that **I may make notes and insights to track my progress.**
-    * ...**edit previously made notes and insights** so that **I may correct mistakes or further elaborate on an existing comment/insights.**
-    * ...**See balanced forms with an included text editor for the main field** so that **I can have a pleasant visual experience across the site, and my job post and notes/insight look visually appealing in the style and layout when the submitted data is displayed.**
-    * ...**Delete or edit insights from the insights page** so that **I can update or delete insights without job posts no longer visible.**
-    * .**Create insights directly from the insights page** so that **I can document my general learning along my career path that may not be specific to a job role advertised on the site.**
- 
-* As a **Site User** I can...
-    * ...**see appropriate responses upon specific interactions with the site** so that **I know my edit, deletion, submission has been successful.**
-    * ...**See appealing colors and uniform style themes** so that **every page and part of the process stimulates a positive response.**
-    * ...**Access the site from any size screen and still have a pleasant experience on the site** so that **I am not restricted to which devices I can use on the site**
-    * ...**access a live URL** so that **I can use the site**
-    * **view open job posts** so that **I can decide which ones are of interest to me.**
-    * ...**type a URL into the web browser** so that **I can access the site's various pages**
-    *  ...**see uniformity on each page and clearly distinguish the content subject** so that **I can quickly and familiarly navigate the page.**
-    * ... **Find relevant contact details** so that **I can contact the site admin via email**
-  
-### **User Stories dropped as part of the agile process**
-* As a **Registered User** I can **create a profile** so that **I can save key details relevant to my job search.**
+Based on 10 epics, the user storeis were created for the proejct. Pls visit the the [Kanbam Board](https://github.com/PJDEVEX/dealdesk/blob/c64ffb02cc7f26afd2ee0918f45f83d8cc4152e1/README.md#L239) for details.
 
 
 ## **Skeleton**
 ### **Wireframes:**
-* [Homepage wireframes](docs/wireframes/homepage.png)  
-* [Full job details wireframes](docs/wireframes/job-full-details.png)
-* [Job opening page wireframes](docs/wireframes/jobs-openings.png)
-* [Pinned jobs page wireframes](docs/wireframes/pinned-jobs.png)
-* [insights page wireframes](docs/wireframes/insights.png)
+* [DealDesk|CRM](https://res.cloudinary.com/pjdevex/image/upload/v1689275971/static/dealdesk-crm/readme/deal_desk_crm_lui0pw.webp)  
 
-I added a hero image to each page during development and made the Job Opening page the home page. I added some forms to edit notes/insights and add a job; however, these were last-minute additions and were a simple form alone on the page. I deemed there were no wireframes required for these.
+The provided image represents the initial user interface (UI) design of the intended web platform. However, as the project progresses and undergoes iterations, there may be deviations in the final look and feel of the application. These changes are expected as part of the natural evolution and refinement process to ensure the best user experience and alignment with project goals. The wireframe serves as a starting point and visual representation of the intended layout and functionality, but it should be understood that the final product may differ in certain aspects based on user feedback, design considerations, and technical implementation.
 
 ### **Database Schema**
-Below is my initial plan for my database tables:  
-![Entity-Relationship-Model](docs/data-model/data-entity-relationship.jpg) 
+I have designed an initial database schema for the project, which can be visualized through the Entity-Relationship Model (ERD) accessible [here](https://drive.google.com/file/d/1wSQkzBoeSgtjjhWu1O8MICGSJ3kA3AvN/view?usp=sharing).
 
-My initial plan for my database tables included using a JSON with data from the API. Since I abandoned this idea early on, I replaced the JSON with a jobs model.
+The database schema comprises four models, with a total of seven tables. The models are as follows:
 
-I also removed my user model in favor of the default model provided by the ALLAUTH library. I combined the notes and insights tables into a single table with a boolean felid to indicate if the entry was a note or insight.
+1. **Client Model:** This model represents the clients and includes the "Client" table, which stores information about the clients.
 
-Below is the final version of the ERD generated via the PGadmin tool connected to my Heroku Postgres database. There are only the three custom tables (Notes, Jobs, PinnedJobs); the rest were generated automatically by various Libraries.
+2. **Project Model:** The project model consists of three tables: "Project," "Brand," and "Category." The "Project" table stores details about the projects, while the "Brand" table stores information related to different brands associated with the projects. The "Category" table categorizes the projects based on specific categories.
 
-![Final ERD](docs/images/erd.png)
- 
-Within my models.py, I also have a function using the @receiver decorator to create a PinnedJobs object whenever a user registers; the object is user-specific and links a user to a many2many list of the user's pinned jobs within the PinnedJobs table. Later this can be further developed into a user profile.
+3. **Team Model:** The team model includes two tables: "Manager" and "SAR" (Sales Account Responsible). The "Manager" table contains data about the managers, and the "SAR" table stores information about the Sales Account Responsibles.
+
+4. **Task Model:** The task model represents the tasks and includes the "Task" table, which stores details of the tasks associated with the projects.
+
+This database schema provides a structured approach for organizing and managing data related to clients, projects, brands, categories, team members, and tasks. It forms the foundation for efficient data storage and retrieval within the project.
 
 ## **Surface**
 ### **Color scheme:**
-I used the following [Image](docs/images/jaguar-logo.png) to generate the following color scheme on [coolers.co](https://coolors.co/603f3f-a0acca-e4b67c-de9f13-000000). The resultant color scheme was:
-![Color Scheme](docs/images/jag-colors.jpg)
+Considering the purpose and target audience of the platform, I have opted for a simple and professional color scheme to align with the official nature of the application. The primary colors chosen for the brand are #004AAD and #FF5757.
 
-Adapting the above throughout the development process. The final list of colors used has been placed in the below [color grid](https://contrast-grid.eightshapes.com/?version=1.1.0&background-colors=&foreground-colors=%23fcf6ba%2C%0D%0A%23b38728%2C%0D%0A%23fbf5b7%2C%0D%0A%23bf953f%0D%0A%23000%0D%0A%23fffdd0%2C%0D%0A%23fafafa%2C%0D%0A%23603f3f%2C%0D%0A%23fdfd96%2C%0D%0A%23e4b67c%2C%0D%0A%23efefef%2C%0D%0A%23de9f13%2C%0D%0A%23dee2e6%2C%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A&es-color-form__tile-size=compact&es-color-form__show-contrast=aaa&es-color-form__show-contrast=aa&es-color-form__show-contrast=aa18&es-color-form__show-contrast=dnp) to check contrast scores.
-
-![Color gird](docs/images/color-grid.jpg)
+By utilizing these colors consistently throughout the platform's interface, we aim to create a visually cohesive and aesthetically pleasing experience for users. The selected colors reflect the intended tone and convey a sense of professionalism and reliability.
 
 ### **Typography**:
+In the context of DealDesk|CRM, the "Public Sans" font family was chosen for its diverse range of font weights and styles. This font family provides various options, including:
 
-For this project, I used two different fonts. 
-#### ***Condiment:***
-* For the J.A.G Logo. I wanted a jagged effect to emphasize the word JAG. 
+- Font Weight 300 (Italic)
+- Font Weight 400 (Regular)
+- Font Weight 500 (Regular)
+- Font Weight 600 (Regular)
+- Font Weight 700 (Regular)
+- Font Weight 300 (Italic)
+- Font Weight 400 (Italic)
+- Font Weight 500 (Italic)
+- Font Weight 600 (Italic)
+- Font Weight 700 (Italic)
 
-#### ***Lato:***
-* The main font for the remainder of the site. This font was used for its soft edges to match most elements' border-radius attributes.
+By utilizing these different font weights and styles, I could achieve a high level of flexibility and versatility in the design, enabling you to create visually appealing typography that suits the project's requirements of professional touch and enhances the overall user experience.
 
 # **Agile Development Process**
-I used [JIRA](https://dnlbowers.atlassian.net/jira/software/projects/PJG/boards/4/roadmap) to track and create issues/user stories. I will provide login credentials for the above project space when submitting the project. However, you can find a summary of my agile process/learnings [here](AGILE.md).
+During the development of the project, I utilized [Github Issues](https://github.com/PJDEVEX/dealdesk/issues) to effectively manage and track epics, issues/user stories, and bugs. However, I must acknowledge that due to the complexity and novel nature of the project, as well as my evolving skills as a developer, I inadvertently overlooked some aspects of the agile development process.
+
+While I strived to adhere to industry best practices, the challenges encountered and the learning curve I experienced contributed to certain deviations from a strictly agile approach. Nonetheless, it is important to highlight the dedication and effort I put into delivering a high-quality software product.
+
+Recognizing the significance of the agile development methodology, I acknowledge the value it brings in terms of iterative development, collaboration, and adaptability. Moving forward, I am committed to further enhancing my understanding and implementation of agile principles to ensure more comprehensive project management and efficient development cycles.
+
+By addressing the identified gaps in my agile development process, I aim to continually improve my skills and deliver even more successful projects in the future.
   
 # **Features**
 ## **Site Navigation**
 ### **Navbar**
+The platform incorporates two types of navigation bars to enhance user experience and facilitate efficient navigation:
+
+ - **Side navbar:** This navigation bar is designed to provide easy access to different sections and features of the platform. It is typically located on the side of the screen and offers a comprehensive menu of options. The content displayed in the side navbar is dynamic and varies based on the user's authorization level and permissions. Users with appropriate authorization can view and access relevant sections and functionalities through this sidebar.
+
+ ![Sidenav](https://res.cloudinary.com/pjdevex/image/upload/v1689296044/static/dealdesk-crm/readme/Dashboard/nav-side_authorised_fmyahq.png)
+ ![Sidenav](https://res.cloudinary.com/pjdevex/image/upload/v1689296044/static/dealdesk-crm/readme/Dashboard/landing_page_nktmyv.png)
+
+- **Toggle navbar for small screens:** To optimize the user experience on smaller screens, such as mobile devices or tablets, a toggle navbar is implemented. This navigation bar is specifically tailored to accommodate limited screen space and offers a condensed menu. Similar to the side navbar, the content displayed in the toggle navbar is also determined based on the user's authorization. It provides a simplified and accessible menu for users to navigate through the platform seamlessly.
+
+![Togglenav](https://res.cloudinary.com/pjdevex/image/upload/v1689296044/static/dealdesk-crm/readme/Dashboard/nav-side_authorised_fmyahq.png)
+![Togglenav](https://res.cloudinary.com/pjdevex/image/upload/v1689296044/static/dealdesk-crm/readme/Dashboard/nav_toggle_unauthorised_zxkbcb.png)
+The utilization of these two types of navbars ensures that users can easily explore and interact with the platform's functionalities while adhering to their specific authorization privileges.
+
+
+
 #### ***Logo:***
-When brainstorming names for the site, the phrase "Jobs A Gooden" came to mind when thinking about finding the perfect job; this term gave rise to the acronym J.A.G. For this reason, I used the below image as the logo/mascot of the brand.
+The logo of DealDesk|CRM is designed around three core pillars: managing complex sales deals, nurturing high-value customer relationships, and embracing future technologies. The logo symbolizes the specialized function of Deal Desk teams, who play a crucial role in facilitating and optimizing sales negotiations. The concept of CRM is represented, highlighting the strategic importance of effectively managing customer interactions to drive business growth. The block icon in the logo signifies the empowerment of SME sales in the modern business landscape, emphasizing the platform's ability to support small and medium-sized enterprises in navigating the evolving sales environment. Overall, the logo reflects the essence of DealDesk|CRM as a solution that combines deal management, customer relationship management, and technological innovation to enable business success.
 
-The Font used was a cursive style on purpose because of the jagged appearance it gave the text.  
+**Logo Square**
   
-![Site Logo](docs/images/features/navbar/logo.JPG)
-  
-#### ***Signed Out:***
-The navbar allows the user to navigate the site easily. When signed out of the page, it shows the following:
-* Shows link to register.
-* Shows login link.
-* Jobs and Tracking dropdown menus are disabled and show a different color than the other nav items.
-* Logo with company acronym and mascot. The logo also serves as a link back to the home page at any point in the user's journey.  
-![Navbar when logged out](docs/images/features/navbar/signed-out.JPG)
-  
-#### ***Signed In:***
-Changes to the nav bar when logged in are:
-* Register and Login nav items replaced with Logout.     
-![Navbar when logged in](docs/images/features/navbar/signed-in.JPG)  
-  
-* Jobs and Tracking dropdowns are now clickable, and the color matches the other nav items.
-    ![Jobs dropdown](docs/images/features/navbar/jobs-dropdown.JPG)  
-    ![Jobs dropdown](docs/images/features/navbar/tracking-dropdown.JPG)
-  
-#### ***Hamburger menu on smaller screen sizes:***
-To display the menu properly on smaller screen sizes, a burger menu was implemented using bootstrap.  
-![Jobs dropdown](docs/images/features/navbar/mobile-menu.JPG)   
-![Jobs dropdown](docs/images/features/navbar/mobile-menu-open.JPG) 
-  
-### **Hero Images:**
-I picked the hero images to portray the page's theme to the user. 
-#### ***Job Openings/Landing Page:***
-I wanted something that inspired the user in their job search for this page. The neon sign saying "Do something great" aligns with the people I spoke to when researching what a user would want out of a job. Out of the five people I asked, "Why did you decide to change jobs last?" 4 said they wanted a career that felt more fulfilling for them and had an impact. The chosen image was to personify this desire.  
-![Job Opening page hero image](docs/images/features/hero-images/job-openings.JPG)  
+  ![Site Logo Square](https://res.cloudinary.com/pjdevex/image/upload/v1689184170/static/dealdesk_crm_logo/dd_sq_dark_vt0sqk.webp)
 
-#### ***Add Job Form Page:***
-I wanted an image that invoked a positive feeling for both users and employers, adding a job to share with the community.
+**Logo rectangular**
   
-![Add Job Form Hero Image](docs/images/features/hero-images/add-job.JPG)
-  
-### ***Saved jobs page:***
-The chosen image shows a man sticking posits to the wall and making notes to track their ideas. I felt this nicely personified the site's intention to save jobs and make notes as a user brainstorms and tracks the journey of their future career path.
+  ![Site Logo rectangular](https://res.cloudinary.com/pjdevex/image/upload/v1689184170/static/dealdesk_crm_logo/dd_hr_light_qo3739.webp)
 
-![Saved Job page hero image](docs/images/features/hero-images/pinboard.JPG)
+**Logo favicon**
   
-### ***Insights page:***
-This hero image sticks with the inspirational theme. The words "Lets your intuition guide you. You are what you have been looking for" are displayed on a pamphlet. There is some [debate in the psychological community](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5020639/#:~:text=Intuition%20and%20insight%20are%20intriguing%20phenomena%20of%20non-analytical,by%20recombining%20the%20single%20elements%20of%20a%20problem.) over the differences between insights and intuition as a type non-analytical mental functioning. However, the common perception is that intuition precedes insight, and for this reason, it seemed fitting to place this inspirational quote on the insights pages.  
+  ![Site Logo favicon](https://res.cloudinary.com/pjdevex/image/upload/v1687544628/static/dealdesk_crm_logo/dd-fav_cqmbp3.webp)
   
-![Insights page hero image](docs/images/features/hero-images/insights.JPG)
-  
-### ***Edit note form page:***
-I chose an image of a person making notes in a copybook for this page.
-  
-![Edit notes Page hero image](docs/images/features/hero-images/notes.JPG)
+#### ***Signup:***
+Since it is a secured, private platform user shall be proved with the user name and password to login to the site
+![Siginup](https://res.cloudinary.com/pjdevex/image/upload/v1689296044/static/dealdesk-crm/readme/Dashboard/signup_u2dytf.png).
 
-## **AllAuth Pages**
-### ***Sign In:***
-![sign-in form](docs/images/features/allauth/sign-in.JPG)
+**NOTE** 
+For evaluation purposes, I will provide the necessary user credentials along with my submission form. These credentials will grant access to the platform and allow the examiner to review the functionality and user experience.
   
-#### ***Form Errors:***
-![Invalid log in credentials](docs/images/features/allauth/signin-formerror.JPG)
+#### ***Signin:***
+As stated earlier user shall be proved with login details as signup is dissabled:     
+![login](https://res.cloudinary.com/pjdevex/image/upload/v1689296045/static/dealdesk-crm/readme/Dashboard/singin_dmb5va.png)  
   
-### ***Sign Up:***
-![sign-up form](docs/images/features/allauth/sign-up.JPG)
-
-#### ***Form Errors:***
-![Form errors for sign up form](docs/images/features/allauth/signup-formerror.JPG)
-
-### ***Sign Out:***
-![Sign out page](docs/images/features/allauth/sign-out.JPG)
-  
-## **Site Instructions**
-  
-![instructions page](docs/images/features/instructions/instructions-page.JPG)
-  
-### ***Access to instructions page:***
-There are three ways a user can access the site instructions detailing how to use the site's primary feature of tracking a job search journey. 
-#### ***Nav link:***
-![Nav link to instructions page](docs/images/features/instructions/nav-link.JPG)  
-  
-#### ***On page Button:***
-There is a button linking the user to the site instructions at the top of the pages main content on the following pages:-
-* Job Openings.
-* Saved Jobs/Jobs Pinboard page.
-* insights page.  
-  
-![Button to instructions](docs/images/features/instructions/button-link.JPG)
-
-#### ***Note form Anchor tag:***
-  
-![Note form Anchor tag](docs/images/features/instructions/note-form-link.JPG)  
-  
-## **Main Page Content**
-### ***Job Openings page:***
-#### ***Add Job Button:***
-![Add Job Button](docs/images/features/openings-page/add-job.JPG)
-  
-#### ***Add Job Form:***
-* Allows a user to submit a job post for admin approval.
-  
-![Add-Job-Form](docs/images/features/openings-page/add-job-form.JPG)
-  
-#### ***Add Job Success message:***
-* Once added, the user will see an alert advising them that the job post has been submitted and is awaiting admin approval.
-* Can cancel the form without the need to complete it.     
-![Add job success message](docs/images/features/openings-page/add-job-success.JPG)
-  
-### ***Job Openings and Pinned Board Content:***
-#### ***Job Preview Card (logged out):***
-* Visible only from the job openings page.
-* Toggle disabled.
-* Button for full job spec invites the user to log in or sign up.
-* Company name, role, location, salary info, and expiry date visible.
-    
-![Job Preview when logged out](docs/images/features/openings-page/previewcard-loggedout.JPG)  
-  
-#### ***Job Preview Card (Logged in):***
-* Only saved jobs will be visible on the jobs pinboard page.
-* From the pinboard page, it will disappear if a post gets unpinned. The remaining jobs will take up the vacated space.
-* Toggle active.
-* When a job is pinned, the toggle goes to the right, and the background turns green.
-* When a job is unpinned, the toggle goes to the left, and the background turns white.
-* Button for full details clickable and directs the user to the full job spec.
-* Company name, role, location, salary info, and expiry date visible.
-  
-![Job preview when logged in](docs/images/features/openings-page/previewcard-loggedin.JPG)  
-
-#### ***Job Preview Card Footer (Logged in as admin user):***
-* Edit button visible for easy editing of a job post.
-* Delete button visible for easy deletion of a job.
-* Closing date for job role visible.  
-   
-![Card footer for admin](docs/images/features/openings-page/previewfooter-admin.JPG)  
-  
-### ***Full Job Details Page***
-#### ***Full details card (unpinned):***
-* Shows all relevant felids of the job entry.
-  
-![Full job spec card (unpinned)](docs/images/features/job-details/fullspec-unpinned.JPG)
-  
-#### ***Full details card (pinned):***
-##### **Full job card**
-* Toggle turns green and to the right.
-* Card width narrows when wider screens to allow for notes section.
-   
-![Full job spec card (pinned)](docs/images/features/job-details/fullspec-pinned.JPG)
-  
-* On narrower screens, card width stays the same, and the button shows to scroll to the notes section instead.  
-  
-![Full job spec card (pinned)](docs/images/features/job-details/fullspec-pinned-mob.JPG)
-  
-#### ***Notes form:***
-* Displayed to the right of the job card on wider screens.
-* Displayed underneath job card on narrower screens.  
-![Notes form on Job details page](docs/images/features/job-details/notes-form.JPG)  
-  
-* Error displayed if the short description or note field is left blank.  
-![Note form error](docs/images/features/job-details/form-error.JPG)
-  
-* Success message is shown upon successful submission of a note/insight.  
-![Note form success](docs/images/features/job-details/form-success.JPG)
-  
-#### ***Notes Accordion:***
-* Notes and insights are displayed here in the accordion, located under the note form.
-* Deletions occur without page refresh
-* When leaving a note, the page redirects to a new URL to prevent a note from being left twice by refreshing the page.  
-  
-![Notes accordion](docs/images/features/job-details/notes-accordion.JPG)  
-  
-##### **Note:**
-* When a user unpins a job, their related notes get deleted to prevent a clog up of old data in the database. 
-* Date created is visible.
-* White background.
-* Edit button available to edit note.
-* Delete button available to delete note.
-  
-![Note](docs/images/features/job-details/note.JPG)  
-  
-##### **Insight:**
-* Will be saved even if the job is unpinned.
-* Date created is visible.
-* Light bulb icon next to the short description indicates the note is an insight.
-* Yellow background.
-* Edit button available to edit insight.
-* Delete button available to delete insight.
-* Noted "marked as insight" in the top right of the body.
-  
-![Note](docs/images/features/job-details/insight.JPG) 
-  
-### ***Insights PAge:***
-#### ***Add Insight Button:***
-Allows the user to add insights without a related job.  
-  
-![Add insight button](docs/images/features/insights-page/add-insight-btn.JPG) 
-  
-#### ***Add Insight Form:***
-* Form allows users to create insights with no related job post.
-* Related_job field is automatically set to null.
-* is_insight is automatically set to true when using this form and cannot be changed by the user.  
-  
-![Add Insight form](docs/images/features/insights-page/create-insight-form.JPG) 
-  
-#### ***Add Insight Form Errors:***
-When a form submission is invalid, errors are shown to guide the user.
-  
-##### **Short description field error:**
-  
-![Shortdescription form error](docs/images/features/insights-page/insight-form-error-short.JPG)  
-  
-##### **Short description field error:**  
-  
-![note field error](docs/images/features/insights-page/insight-form-error-note.JPG)  
-    
-#### ***Insight left success message:***
-  
-Once submitting an insight from the insight page, a success message displays on the insights page.
-  
-![Insight success](docs/images/features/insights-page/insights-success.JPG)
-  
-#### ***Insight Item Display:***
-  
-* Insight item displayed with date created.
-* Short description and note field visible.
-* Button to edit an entry.
-* Button to delete the entry. 
-   
-![Insight item on insights page](docs/images/features/insights-page/insight-item.JPG)
-  
-#### ***Timeline:***
-  
-Acts as a central focal point for insights, so they display on alternate sides is in the order from newest to oldest.  
-  
-![Insights Timeline](docs/images/features/insights-page/timeline.JPG)
-
-On narrower devices, the insights stack on top of each other:  
-   
-![Insights Timeline Mobile](docs/images/features/insights-page/timeline-mob.JPG)
-### ***Contact Us Page:***
-  
-* Fake email address to contact site admins (In the future, I will be looking into domain names)
-* Navigation button to the job openings page.
-* Navigation button to the job pinboard page.    
-  
-![Contact us page](docs/images/features/contact-us.JPG)
+#### ***Signout:***
+* blow is the signout.
+    ![signout](https://res.cloudinary.com/pjdevex/image/upload/v1689296978/static/dealdesk-crm/readme/Dashboard/signout_igw3d8.png)  
   
 
-### ***Pagination:***
-It appears on the following pages when:
-  * Job Openings page when more than six items are to be displayed.
-  * Job pinboard page when more than six items are to be displayed.
-  * Insights page when more than four items are available.  
-![Pagination bar](docs/images/features/pagination.JPG)
-
-### ***Footer:***
-* Displays page copyright.
-* Displays social media links to contact the author.  
   
-![Footer](docs/images/features/footer.JPG)
+### **Home Page:**
+Below is the hompage/ index page for the site,
+![Homepage](https://res.cloudinary.com/pjdevex/image/upload/v1689296044/static/dealdesk-crm/readme/Dashboard/landing_page_nktmyv.png) 
 
-## **Error pages**
-The below error pages were created out of necessity. A user could still access some pages when logged out. Other pages would show an error due to the logic on the page needing a user object to render the logic from the view.
+#### ***Dashboard:***
+Upon successful user authentication, the platform directs the user to the dashboard, strategically designed with the busy business professional in mind. The dashboard serves as a centralized hub, offering a concise and intuitive overview of key business metrics and performance indicators. This thoughtful design approach enables users to swiftly grasp critical insights and make informed decisions, optimizing their efficiency and productivity. By presenting relevant information in a visually appealing and easily digestible manner, the dashboard empowers users to quickly assess the state of their business, enhancing their ability to navigate and prioritize tasks effectively. 
+![dashboard](https://res.cloudinary.com/pjdevex/image/upload/v1689296044/static/dealdesk-crm/readme/Dashboard/dashboard_wyfhtv.png)  
+
+#### ***Taks Manger:***
+Continuing with the user-centric approach and considering the needs of busy professionals, the next vital component is the Task Manager. This feature takes into account the importance of prioritization and efficient task management in the daily workflow. With its comprehensive CRUD (Create, Read, Update, Delete) functionality, the Task Manager enables users to seamlessly create, view, modify, and remove tasks as needed. By providing a centralized platform to organize and monitor their daily priorities, professionals can effectively plan, allocate resources, and stay on top of their tasks. The Task Manager module enhances productivity and streamlines workflow management, ensuring that users can efficiently handle their responsibilities and achieve their objectives in a timely manner.
   
-My initial solution was for this was a members-only page when a user was not logged in. However, due to some URLs being linked to views requiring user-specific data, a default 500 error would be shown. I decided to handle this with a customized error page.
+![Taskmanager-list](https://res.cloudinary.com/pjdevex/image/upload/v1689296043/static/dealdesk-crm/readme/Task%20Manager/task_list_view_zv0vs6.png)
+![Taskmanager-filter](https://res.cloudinary.com/pjdevex/image/upload/v1689296043/static/dealdesk-crm/readme/Task%20Manager/task_filter_t7w8rn.png)
+![Taskmanager-new](https://res.cloudinary.com/pjdevex/image/upload/v1689296043/static/dealdesk-crm/readme/Task%20Manager/task_new_wezrjg.png)
+![Taskmanager-edit](https://res.cloudinary.com/pjdevex/image/upload/v1689296043/static/dealdesk-crm/readme/Task%20Manager/task_edit_uipdvz.png)
+![Taskmanager-delete](https://res.cloudinary.com/pjdevex/image/upload/v1689296043/static/dealdesk-crm/readme/Task%20Manager/task_delete_ei4qej.png)
+![Taskmanager-pagination](https://res.cloudinary.com/pjdevex/image/upload/v1689296043/static/dealdesk-crm/readme/Task%20Manager/taks_list_pagination_uwcxpm.png)
+
+
+### ***Projects:***
+Moving forward, we have the Projects/Leads module, which encapsulates the core objectives that the team strives to achieve. This module serves as a central hub where users can access and manage their projects and leads. It offers a comprehensive range of functionalities, including list view with filtering and search capabilities, detailed project/lead views, the ability to create new projects/leads, make edits, and perform deletions when necessary. Additionally, the module incorporates pagination functionality to ensure efficient navigation and presentation of project/lead records. By leveraging these features, users can effectively track, organize, and manipulate project/lead data, enabling seamless collaboration and driving the team towards successful outcomes.
+
+![Project-list](https://res.cloudinary.com/pjdevex/image/upload/v1689296045/static/dealdesk-crm/readme/Projects/projects_leadlist_details_ro2v3z.png)
+![Project-filter](https://res.cloudinary.com/pjdevex/image/upload/v1689296045/static/dealdesk-crm/readme/Projects/projects_leadlist_filter_avjikx.png)
+![Project-detail](https://res.cloudinary.com/pjdevex/image/upload/v1689296045/static/dealdesk-crm/readme/Projects/projects_leadlist_details_ro2v3z.png)
+![Project-new](https://res.cloudinary.com/pjdevex/image/upload/v1689296045/static/dealdesk-crm/readme/Projects/projects_leadlist_new_xkergc.png)
+![Project-edit](https://res.cloudinary.com/pjdevex/image/upload/v1689296045/static/dealdesk-crm/readme/Projects/projects_leadlist_edit_vatbck.png)
+![Project-delete](https://res.cloudinary.com/pjdevex/image/upload/v1689296045/static/dealdesk-crm/readme/Projects/projects_leadlist_delete_ooyqso.png)
+![Project-pagination](https://res.cloudinary.com/pjdevex/image/upload/v1689296045/static/dealdesk-crm/readme/Projects/projects_leadlist_pagination_xittik.png)
+
+### ***Client:***
+At the core of the entire process lies the Client module, serving as the foundational element of the business. Ensuring the availability of up-to-date and accurate client details is of utmost importance for sustainable growth and success. With a strong focus on the essential CRUD (Create, Read, Update, Delete) functionalities, the Client model empowers users to efficiently manage client-related information.
+
+Within the Client view, users are provided with a comprehensive list showcasing client records, complete with advanced filtering and search capabilities. This enables quick and seamless navigation, empowering users to locate specific clients based on customized criteria. Moreover, a detailed view is available to offer a holistic perspective on individual clients, presenting a comprehensive overview of their profiles.
+
+To facilitate seamless interactions, the module supports the creation of new client entries, allowing users to capture and store essential information efficiently. Additionally, the ability to edit existing client details empowers users to keep client information up-to-date, ensuring accuracy and relevance. When necessary, the module also offers the option to remove unwanted client records through a deletion functionality, maintaining data integrity and decluttering the system.
+
+By leveraging these comprehensive features, users can harness the power of the Client module to build and nurture strong, long-lasting client relationships, thereby driving business growth and success.
+
+![Client-list](https://res.cloudinary.com/pjdevex/image/upload/v1689296045/static/dealdesk-crm/readme/Clients/clients_list_view_p0lzoe.png)
+![Client-filter](https://res.cloudinary.com/pjdevex/image/upload/v1689296046/static/dealdesk-crm/readme/Clients/client_list_filter_up6vtz.png)
+![Client-detail](https://res.cloudinary.com/pjdevex/image/upload/v1689296046/static/dealdesk-crm/readme/Clients/client_list_details_whk85u.png)
+![Client-new](https://res.cloudinary.com/pjdevex/image/upload/v1689296046/static/dealdesk-crm/readme/Clients/client_list_new_pomlvy.png)
+![Client-edit](https://res.cloudinary.com/pjdevex/image/upload/v1689296046/static/dealdesk-crm/readme/Clients/client_list_edit_h1vwd2.png)
+![Client-delete](https://res.cloudinary.com/pjdevex/image/upload/v1689296046/static/dealdesk-crm/readme/Clients/client_list_delete_hlnul6.png)
+![Client-pagination](https://res.cloudinary.com/pjdevex/image/upload/v1689296046/static/dealdesk-crm/readme/Clients/client_list_pagination_a3hxxx.png)
   
-### ***Members Only Page:***
 
-The members-only page is visible when logged out and trying to access the below pages via the URL:
-* Full job spec page.
-* Edit note/insight form page.
-* Add job form.
-* Add insights form.
-  
-![Member only page](docs/images/features/error-pages/members-pages.JPG)
-
-### ***500 Server Error Page:***
-The 500 error page appears on those URLs linked to views requiring a user object to function. It can cover other scenarios in the future; however, after extensive manual testing, this was the only trigger I found for this page.
-
-Pages where the error shows when trying to access a page via the URL when logged out:
-* Job pinboard page.
-* Insights page.
-  
-![500 error page](docs/images/features/error-pages/500.JPG)
-
-### ***404 Page Not Found Error Page:***
-This error shows when a user types a URL into the browser which does not exist within the app's domain.
-![404 error page](docs/images/features/error-pages/404.JPG)
-
-## **Warning Modals**
-### ***Delete Note/Insight:***
-![Delete entry (note/insight) warning](docs/images/features/warning-modals/delete-note.JPG)
-  
-### ***Delete Job:***
-![Delete job warning](docs/images/features/warning-modals/delete-job.JPG)
-
-### ***Unpin Job:***
-![Unpin job warning](docs/images/features/warning-modals/unpin-post.JPG)
-
-### ***Delete element from the DOM:***
-Once deleting a job or unpinning a job, the element is hidden with javascript, and then the page refreshes to fill the vacant spot as the page rerenders. I took the approach of hiding the element first on list views to prevent the user from re-pinning the post before it refreshed. After removing the element, a refresh was required for the other elements to fill the page's space and prevent pagination issues.
-![element hidden with javascript](docs/images/features/warning-modals/hiding-element.JPG)
 
 # **Future development**
-* Automated script to delete/archive hidden job posts by set criteria when actions by admin.
-* Build an online community.
-* Job categories
-* Search feature
-* API for a Job's site
-* Auto email to Job post author when a job is close to expired that it will be deleted after the specified expiration time.
-* [KanBan board](https://codepen.io/josetxu/pen/VwyxZKq) to track applied, round, and response.
-* The ability for the user to keep their added posts private, visible only on their saved jobs board. Currently, hiding a job in this way is only possible if the admin pins the post on the user's behalf from the admin panel. 
-* Counter on admin's delete job button, which shows the number of users with the job pinned. Preventing the Admin from having to check the admin panel for this info prior to deleting the job.
+I have identified future developments in two primary areas: strategic and tactical/functional.
+
+**Tactical/Functional Developments:**
+* Error Pages - Implementing error pages such as 404 and 500 to provide informative and user-friendly error messages when encountering page or server errors.
+
+* Task List Enhancements:
+- Adding a date range selection option to filter tasks based on their status within a specific timeframe.
+- Enhancing task visibility by displaying the completion date of projects at a glance.
+- Introducing filtering options under the headings bar for improved task organization and navigation.
+- Implementing an undo button functionality to allow users to revert accidental task deletions.
+- Enabling the ability to recall mistakenly deleted tasks, providing an additional layer of data recovery.
+- Allowing users to add new individuals to the "Assigned to" tab when creating a new task, facilitating efficient task assignment.
+- Automating the task numbering system to automatically assign the next available task number when creating new tasks.
+- Delete authorisation
+- Differentiate the views and CRUD based on the user groups
+- clear button to filters in all list views
+- Possiblity of using filter & search as option (let user to decide in the view)
+
+*  Clients:
+- Enhancing the client form to include auto-fill functionality or a dropdown menu for country code selection, ensuring accurate telephone number entry.
+- Resolving any existing bugs related to field validation in the Clients' details navigation page.
+- Exploring the possibility of retrieving deleted client items for data recovery purposes.
+
+**Strategic Future Developments:** 
+
+*  Mail Integration - Integrating email functionality within the DealDesk | CRM platform to facilitate seamless communication and collaboration.
+*  KAM (Key Account Management) Analysis Module - Implementing a dedicated module to analyze and manage key accounts, enabling strategic decision-making and relationship development.
+*  Product Module - Introducing a product module to effectively manage and track product information, inventory, and sales-related data.
+* Quotations and Proposal Module - Developing a module to streamline the quotation and proposal creation process, enhancing efficiency and accuracy.
+* Integration of AI/ML - Leveraging the power of Artificial Intelligence (AI) and Machine Learning (ML) technologies to enhance the capabilities and intelligence of the DealDesk | CRM platform.
+
+These future developments will drive continuous improvement, address user needs, and propel the platform towards enhanced functionality, efficiency, and strategic alignment with business objectives.
+
 
 # **Testing Phase**
-I have included testing details during and post-development in a separate document called [TESTING.md](TESTING.md).
+I have included testing details during and post-development in a separate document called [TESTING](https://drive.google.com/file/d/1KoXrVdEqYAWf58OLwIiqa_TuJPrzzXzA/view?usp=sharing).
 
 # **Deployment**
 The final Deployed site can be found [here](https://jobs-a-gooden.herokuapp.com/)
@@ -660,47 +363,41 @@ I have included details of my initial deployment in a separate document called [
 * Jinja
   * Jinja was the templating language used in order to implement the views.py logic and models.py data into a template so it could be displayed to the user.
 * Bootstrap 5.1.3
-  * Used to style HTML, CSS, minor javascript. The more I used this framework the most I realized retrospectively how it could have saved me writing several parts of the code I had already written.
+  * Used to style HTML, CSS, minor javascript.
 * Font awesome
   * All icons throughout the page.
-
+* Canva
+  * Creating the logo
+* Googl Font
+  * For font types and styling
+* cdnjs.com 
+  * content delivery network for Bootstrap css and js 
+* Chart.js
+  * js based chart creation. It is worth noting that unless the js code placed in the same html, charts were not functioning. pls ref the [documentation](https://www.chartjs.org/docs/latest/getting-started/)
+* Cloudinary
+  *  cloud-based image- and video-management solution for websites and mobile apps. 
 
 # Honorable mentions  
-* [Richard Wells](https://github.com/D0nni387) - Mentor extraordinaire. He was ways on call when I needed him and never afraid to pull out the big guns to push that little bit further.
-* [Sean Murphy](https://github.com/nazarja) - Just a legend, any way you slice it, he helped me understand the logic behind my pin job feature by providing examples of similar things and helped me to connect to Heroku through the console of VSCODE
-* [Matt Bodden](https://github.com/MattBCoding) - The comfort of a friend no matter the time of day, the push of a competitor even if I was not playing the game.
-* [Steve Wier](https://github.com/StevenWeir038) - A man and a legend in his own right. Always checking in on me and testing my work. Pushing me to move forward even when I did not feel like it.
-* Guillermo Brachetta - Explained dotenv package and how to use it.
-* Ed_CI - was always there in the project channel and quick to jump in to help
-* [Megan Vella](https://github.com/Medusas71) - Gave me the most extensive testing review of the lot. Always quick to say hello and look for ways to help.
-* Daniel Callaghan - Always hanging out in the PP4 channel and quick to answer any call for help.
+I would like to express my gratitude and recognition to the following individuals and organizations who have played a significant role in my journey:
 
-* The code institute Slack community as a whole who tested and supported me throughout. There have been too many to mention everyone who encouraged along the way, but they are all superstars.
+* Daisy McGirr - My mentor from Code Institute, whose guidance, support, and expertise have been invaluable throughout the development process. Daisy has been a true inspiration, constantly pushing me to strive for excellence.
+* David Bowers - I would like to extend my appreciation to David for his willingness to assist and support me in the absence of my mentor. His humility and willingness to help have made a positive impact on my progress.
+* Code Institute - I am grateful to the entire team at Code Institute for providing an exceptional learning experience and resources. Special thanks to the tutor team, especially Alen McGee and Jason, for their prompt assistance and guidance whenever I encountered challenges.
+* My Wife and Child - I owe a heartfelt thank you to my wife and child for their unwavering support and understanding throughout this journey. Their presence has been a constant source of motivation and inspiration. 
 
-* And the biggest thanks goes to my wife and child, who have had to deal with me face to face through it all. Oliver has been my reason for the change, and Analise my inspiration. 
+These individuals and organizations have made a significant impact on my development journey, and I am grateful for their contributions to my success.
   
 # Credits
 * Balsamiq was used to create the wireframes.
 * The site was developed using VScode.
 * GitHub was used to store my repository.
 * Responsive screenshot made using [techsini.com](https://techsini.com/multi-mockup/index.php)
-* Flow chart symbol meaning taken from [conceptdraw.com](https://www.conceptdraw.com/How-To-Guide/flow-chart-symbols)
 * Guidance on file structure for templates folder from [learndjango.com article](https://learndjango.com/tutorials/template-structure)
-* [Article on writing good user stories](https://www.industriallogic.com/blog/as-a-developer-is-not-a-user-story/)
-* Flow charts made using [draw.io](https://app.diagrams.net/)
-* [coolers.co](https://coolors.co/603f3f-a0acca-e4b67c-de9f13-000000) was used to generate color scheme from the jaguar image
 * [W3cschool](https://www.w3schools.com/howto/howto_css_timeline.asp) was used to source the majority of the code used to create a timeline in CSS for the insights page. Minor styling adjustments were made and the HTML was adapted to include a Jinja for loop to display the relevant data without code repetition.
-* [CSEStack](https://www.csestack.org/display-messages-form-submit-django/) to research using messages upon form submission.
-* The PageTitleViewMixin was taken from [djangoforge.com](https://www.djangoforge.dev/guides/page-titles/)
 * How to handle exceptions [studygyann.com](https://studygyaan.com/django/django-custom-404-error-template-page)
-* The golden gradient color scheme - [brandgradients.com](http://www.brandgradients.com/gold-gradient).
 * Fonts were taken from [Google Fonts](https://fonts.google.com/)
-* Images:
-  * Hero images taken from [upsplash.com](https://unsplash.com) 
-  * Jaguar cartoon image from [https://favpng.com](https://favpng.com/png_view/jaguar-jaguar-clip-art-vector-graphics-cartoon-illustration-png/yF62hEBm)
 * Multiple videos sourced from youtube were used to research a variety of topics:
     * [Programming with Mosh Python Django Tutorial for Beginners](https://youtu.be/rHux0gMZ3Eg)
-    * [Django forms with Ajax | How to use ajax with django](https://youtu.be/C4fr3SCqgJQ)
     * [Learn Django - Class-Based Views series](https://youtu.be/ScteNE1jB4g)
 * General references:
     * [Geeks for Geeks](https://www.geeksforgeeks.org/)
